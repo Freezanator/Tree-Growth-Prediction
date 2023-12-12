@@ -23,4 +23,3 @@ st.write(pd.DataFrame(selected_row[['TAG', 'QUAD', 'XCO', 'YCO', 'D12', 'D15', '
 
 # Plot graph for selected TAG using st.line_chart
 st.line_chart(selected_row[['D12', 'D15', 'D17', 'D19', 'D21', 'D23']])
-st.pyplot()  # Display the chart
