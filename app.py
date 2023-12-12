@@ -19,7 +19,7 @@ selected_tag = st.selectbox('Select TAG:', filtered_df['TAG'])
 # Display selected row data horizontally
 selected_row = filtered_df[filtered_df['TAG'] == selected_tag].squeeze()
 st.write('Selected Row Data:')
-st.write(pd.DataFrame(selected_row[['TAG', 'QUAD', 'XCO', 'YCO', 'D12', 'D15', 'D17', 'D19', 'D21', 'D23']]).transpose())
+st.write(pd.DataFrame(selected_row[['TAG', 'QUAD', 'XCO', 'YCO', 'D12', 'D15', 'D17', 'D19', 'D21', 'D23 (Predicted)']]).transpose())
 
 # Plot graph for selected TAG using st.line_chart
-st.line_chart(selected_row[['D12', 'D15', 'D17', 'D19', 'D21', 'D23']])
+st.line_chart(selected_row[['D12', 'D15', 'D17', 'D19', 'D21', 'D23 (Predicted)']])
