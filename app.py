@@ -22,6 +22,6 @@ selected_row = filtered_df[filtered_df['TAG'] == selected_tag].squeeze()
 st.write('Selected Row Data:')
 st.write(pd.DataFrame(selected_row[['TAG', 'QUAD', 'XCO', 'YCO', 'D12', 'D15', 'D17', 'D19', 'D21', 'D23']]).transpose())
 
-# Plot graph for selected TAG using Plotly
-fig = px.line(x=['D12', 'D15', 'D17', 'D19', 'D21', 'D23'], y=selected_row[['D12', 'D15', 'D17', 'D19', 'D21', 'D23']], labels={'x': 'Parameter', 'y': 'Value'}, title=f'Data Points for {selected_tag}')
-st.plotly_chart(fig)
+# Plot graph for selected TAG using st.line_chart
+st.line_chart(selected_row[['D12', 'D15', 'D17', 'D19', 'D21', 'D23']])
+st.pyplot()  # Display the chart
