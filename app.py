@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # Reads from the dataset
-df = pd.read_csv('Data Pasoh Results.csv.csv')
+df = pd.read_csv('Data Pasoh Results.csv')
 
 # Title
 st.title('Pasoh DBH Prediction')
