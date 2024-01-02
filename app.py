@@ -8,7 +8,7 @@ df = pd.read_csv('Data Pasoh Results.csv')
 st.title('Pasoh DBH Prediction')
 
 # Dropdown for selecting TAG
-selected_tag = st.selectbox('Select TAG:', df['TAG'])
+selected_tag = st.selectbox('Select Tree:', df['TAG'])
 
 # Display selected row data horizontally
 selected_row = df[df['TAG'] == selected_tag].squeeze()
