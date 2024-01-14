@@ -12,18 +12,26 @@ show_pages(
 )
 
 def main():
-    st.title("Interactive Map with Streamlit and Folium")
-    st.header("Pasoh Reserve Forest Location")
+	st.title("Pasoh Forest Reserve Map")
+	
+	# Coordinates for Pasoh Forest Reserve
+	pasoh_coords = (2.981981025774135, 102.31312029808895)
+	
+	# Create a Folium map centered around Pasoh Forest Reserve
+	map_pasoh = folium.Map(location = pasoh_coords, zoom_start = 10)
+	
+	# Add a marker for Pasoh Forest Reserve
+	folium.Marker(location = pasoh_coords, popup = "Pasoh Forest Reserve").add_to(map_pasoh)
+	
+	# Display the map using st.write()
+	folium_static_map(map_pasoh)
 
-    # Create a Folium map
-    m = folium.Map(
-        location=[2.981981025774135, 102.31312029808895],  # Replace with your desired initial location
-        zoom_start=12,  # Adjust the zoom level as needed
-    )
 
-    # Display the map in Streamlit using HTML
-    st.write("### Interactive Map:")
-    folium_static(m)
+def folium_static_map(m):
+	width, height = 700, 400
+	html = m.get_root().render()
+	st.components.v1.html(html, width = width, height = height)
+
 
 if __name__ == "__main__":
-    main()
+	main()
