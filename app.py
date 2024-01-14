@@ -1,19 +1,31 @@
 import streamlit as st
 import pandas as pd
+import folium
+from st_pages import Page, show_pages, add_page_title
 
-# Reads from the dataset
-df = pd.read_csv('Data Pasoh Results.csv')
+add_page_title()
 
-# Title
-st.title('Pasoh DBH Prediction')
+show_pages(
+	[
+		Page("Home.py", "Home")
+		Page("pages/Statistics.py", "Statistics")
+		Page("pages/DigitalTwin.py", "Digital Twin")
+	]
+)
 
-# Dropdown for selecting TAG
-selected_tag = st.selectbox('Select Tree:', df['TAG'])
+def main():
+    st.title("Interactive Map with Streamlit and Folium")
+    st.header("Pasoh Reserve Forest Location")
 
-# Display selected row data horizontally
-selected_row = df[df['TAG'] == selected_tag].squeeze()
-st.write('Selected Row Data:')
-st.write(pd.DataFrame(selected_row[['TAG', 'QUAD', 'XCO', 'YCO', 'DBH2017', 'DBH2019', 'DBH2021', 'DBH2023']]).transpose())
+    # Create a Folium map
+    m = folium.Map(
+        location=[latitude, longitude],  # Replace with your desired initial location
+        zoom_start=12,  # Adjust the zoom level as needed
+    )
 
-# Plot graph for selected TAG using st.line_chart
-st.line_chart(selected_row[['DBH2017', 'DBH2019', 'DBH2021', 'DBH2023']])
+    # Display the map in Streamlit using HTML
+    st.write("### Interactive Map:")
+    folium_static(m)
+
+if __name__ == "__main__":
+    main()
