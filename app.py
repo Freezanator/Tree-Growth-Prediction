@@ -17,7 +17,7 @@ def main():
 
     # Create a Folium map
     m = folium.Map(
-        location=[latitude, longitude],  # Replace with your desired initial location
+        location=[2.981981025774135, 102.31312029808895],  # Replace with your desired initial location
         zoom_start=12,  # Adjust the zoom level as needed
     )
 
