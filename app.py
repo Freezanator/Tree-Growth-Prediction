@@ -3,6 +3,7 @@ import pandas as pd
 import folium
 from st_pages import Page, show_pages, add_page_title
 import matplotlib.pyplot as plt
+import plotly.express as px
 
 add_page_title()
 
@@ -28,9 +29,9 @@ def map(df):
 
     # Update title attributes
     fig.update_layout(
-        title=dict(text='Coordinates of Trees in 2021')
-        xaxis_title=dict(text='X-Coordinate')
-        yaxis_title=dict(text='Y-Coordinate')
+        title='Coordinates of Trees in 2021'
+        xaxis_title='X-Coordinate'
+        yaxis_title='Y-Coordinate'
     )
 
     st.plotly_chart(fig)
