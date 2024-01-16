@@ -3,4 +3,4 @@ pandas
 st-pages
 streamlit
 matplotlib
-plotly
+plotly>==5.18.0
