@@ -13,6 +13,11 @@ show_pages(
 	]
 )
 
+def folium_static_map(m):
+	width, height = 700, 400
+	html = m.get_root().render()
+	st.components.v1.html(html, width = width, height = height)
+
 def main():
 
 	st.header("Introduction")
@@ -34,12 +39,10 @@ def main():
 	# Display the map using st.write()
 	folium_static_map(map_pasoh)
 
+	st.title("")
 
-def folium_static_map(m):
-	width, height = 700, 400
-	html = m.get_root().render()
-	st.components.v1.html(html, width = width, height = height)
+	st.header("Tree Coordinate Map (as of 2021)")
 
-
+	
 if __name__ == "__main__":
 	main()
