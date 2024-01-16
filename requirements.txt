@@ -4,3 +4,4 @@ st-pages==0.4.5
 streamlit==1.29.0
 matplotlib==3.8.2
 plotly==5.18.0
+plotly-express==0.4.1
