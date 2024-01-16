@@ -47,10 +47,32 @@ def main():
 		st.metric("Total number of trees", "1944")
 
 	with col2:
-		st.metric("Total number of unique species", "379")
+		st.metric("Total number of tree species", "379")
 
 	st.title("")
 	st.header("Tree Coordinate Map (as of 2021)")
+
+	# Read the Excel file
+    df = pd.read_excel("Data Pasoh Original.xlsx", usecols=['TAG', 'SPECIES', 'XCO', 'YCO'])
+
+    # Get the unique species
+    species = df['SPECIES'].unique()
+
+    # Create a dropdown for species selection
+    selected_species = st.selectbox('Select a species', options=species)
+
+    # Filter the dataframe based on the selected species
+    df_filtered = df[df['SPECIES'] == selected_species]
+
+    # Create a scatter plot
+    fig, ax = plt.subplots()
+    scatter = ax.scatter(df_filtered['XCO'], df_filtered['YCO'], c=df_filtered['SPECIES'].astype('category').cat.codes)
+    ax.set_xlabel('XCO')
+    ax.set_ylabel('YCO')
+    ax.set_title('Scatter plot of coordinates')
+
+    # Show the plot
+    st.pyplot(fig)
 
 	
 if __name__ == "__main__":
