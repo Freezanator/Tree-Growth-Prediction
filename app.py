@@ -29,8 +29,8 @@ def map(df):
 
     # Update title attributes
     fig.update_layout(
-        title='Coordinates of Trees in 2021'
-        xaxis_title='X-Coordinate'
+        title='Coordinates of Trees in 2021',
+        xaxis_title='X-Coordinate',
         yaxis_title='Y-Coordinate'
     )
 
