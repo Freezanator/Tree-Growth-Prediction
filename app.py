@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import folium
 from st_pages import Page, show_pages, add_page_title
+import matplotlib.pyplot as plt
 
 add_page_title()
 
@@ -19,9 +20,23 @@ def folium_static_map(m):
     html = m.get_root().render()
     st.components.v1.html(html, width=width, height=height)
 
+def map(df):
+    # Convert 'SP' column to categorical
+    df['SP'] = df['SP'].astype('category')
+
+    fig = px.scatter(df, x='XCO', y='YCO', color='SP')
+
+    # Update title attributes
+    fig.update_layout(
+        title=dict(text='Coordinates of Trees in 2021')
+        xaxis_title=dict(text='X-Coordinate')
+        yaxis_title=dict(text='Y-Coordinate')
+    )
+
+    st.plotly_chart(fig)
+
 
 def main():
-
     st.header("Introduction")
 
     st.write("The Pasoh Forest Reserve is a nature reserve situated approximately 8 km from Simpang Pertang, Malaysia, and about 70 km southeast of Kuala Lumpur. It spans an area of 2,450 hectares, with a central zone of 600 hectares encircled by a buffer zone. The reserve is bordered by palm oil plantations on three sides, while a selectively logged dipterocarp forest adjoins the remaining side. The reserve receives an annual rainfall averaging 2 metres, with a range between 1,728 and 3,112 mm. In 1987, a 50-hectare forest dynamics plot was set up within the reserve. This initiative was a joint effort between the Forest Research Institute Malaysia, the Forest Global Earth Observatory (previously known as the Center for Tropical Forest Science), and the Smithsonian Tropical Research Institute. Since 1989, three censuses have been conducted in the plot, recording approximately 340,000 trees from 800 different species.")
@@ -55,27 +70,22 @@ def main():
     st.title("")
     st.header("Tree Coordinate Map (as of 2021)")
 
-    # Read the Excel file
-    df = pd.read_excel("Data Pasoh Original.xlsx", usecols=['TAG', 'SPECIES', 'XCO', 'YCO'])
+    data = pd.read_csv('Species Coordinates.csv')
+    df = pd.DataFrame(data)
+    print(df.columns.str.strip())
 
-    # Get the unique species
-    species = df['SPECIES'].unique()
+    # Get unique species values for the selectbox
+    species_list = df['SP'].unique().tolist()
 
-    # Create a dropdown for species selection
-    selected_species = st.selectbox('Select a species', options=species)
+    selected_species = st.multiselect('Select Species to see their location', species_list)
 
-    # Filter the dataframe based on the selected species
-    df_filtered = df[df['SPECIES'] == selected_species]
-
-    # Create a scatter plot
-    fig, ax = plt.subplots()
-    scatter = ax.scatter(df_filtered['XCO'], df_filtered['YCO'], c=df_filtered['SPECIES'].astype('category').cat.codes)
-    ax.set_xlabel('XCO')
-    ax.set_ylabel('YCO')
-    ax.set_title('Scatter plot of coordinates')
-
-    # Show the plot
-    st.pyplot(fig)
+    # Show a plot of selected species
+    if selected_species:
+        filtered_df = df[df['SP'].isin(selected_species)]
+        map(filtered_df)
+    else:
+    # Show a plot of all species
+        map(df)
 
 
 if __name__ == "__main__":
