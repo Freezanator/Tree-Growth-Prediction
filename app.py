@@ -23,8 +23,8 @@ def main():
 	st.header("Introduction")
 
 	st.write("The Pasoh Forest Reserve is a nature reserve situated approximately 8 km from Simpang Pertang, Malaysia, and about 70 km southeast of Kuala Lumpur. It spans an area of 2,450 hectares, with a central zone of 600 hectares encircled by a buffer zone. The reserve is bordered by palm oil plantations on three sides, while a selectively logged dipterocarp forest adjoins the remaining side. The reserve receives an annual rainfall averaging 2 metres, with a range between 1,728 and 3,112 mm. In 1987, a 50-hectare forest dynamics plot was set up within the reserve. This initiative was a joint effort between the Forest Research Institute Malaysia, the Forest Global Earth Observatory (previously known as the Center for Tropical Forest Science), and the Smithsonian Tropical Research Institute. Since 1989, three censuses have been conducted in the plot, recording approximately 340,000 trees from 800 different species.")
+	
 	st.title("")
-
 	st.header("Pasoh Forest Reserve Map")
 	
 	# Coordinates for Pasoh Forest Reserve
@@ -41,6 +41,17 @@ def main():
 
 	st.title("")
 
+	col1, col2 = st.columns(2)
+
+	with col1:
+		st.write("Total number of trees")
+		st.header("1944")
+
+	with col2:
+		st.write("Total number of unique species")
+		st.header("379")
+
+	st.title("")
 	st.header("Tree Coordinate Map (as of 2021)")
 
 	
