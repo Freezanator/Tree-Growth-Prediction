@@ -14,7 +14,7 @@ show_pages(
 )
 
 def main():
-	st.title("Pasoh Forest Reserve Map")
+	st.header("Pasoh Forest Reserve Map")
 	
 	# Coordinates for Pasoh Forest Reserve
 	pasoh_coords = (2.981981025774135, 102.31312029808895)
