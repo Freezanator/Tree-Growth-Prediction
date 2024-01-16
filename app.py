@@ -44,12 +44,10 @@ def main():
 	col1, col2 = st.columns(2)
 
 	with col1:
-		st.write("Total number of trees")
-		st.header("1944")
+		st.metric("Total number of trees", "1944")
 
 	with col2:
-		st.write("Total number of unique species")
-		st.header("379")
+		st.metric("Total number of unique species", "379")
 
 	st.title("")
 	st.header("Tree Coordinate Map (as of 2021)")
