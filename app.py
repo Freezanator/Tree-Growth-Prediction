@@ -7,9 +7,9 @@ add_page_title()
 
 show_pages(
 	[
-		Page("app.py", "Home")
-		Page("pages/Statistics.py", "Statistics")
-		Page("pages/DigitalTwin.py", "Digital Twin")
+		Page("app.py", "Home"),
+		Page("pages/Statistics.py", "Statistics"),
+		Page("pages/DigitalTwin.py", "Digital Twin"),
 	]
 )
 
