@@ -2,3 +2,4 @@ folium==0.15.1
 pandas==2.1.4
 st-pages==0.4.5
 streamlit==1.29.0
+matplotlib
