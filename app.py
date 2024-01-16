@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import folium
 from st_pages import Page, show_pages, add_page_title
-import plotly.express as px
 
 add_page_title()
 
