@@ -81,7 +81,7 @@ def main():
 
     # Show a plot of selected species
     if selected_species:
-        filtered_df = df[df['SP'].isin(selected_species)]
+        filtered_df = df[df['SP'] == selected_species]
         map(filtered_df)
     else:
     # Show a plot of all species
