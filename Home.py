@@ -77,7 +77,7 @@ def main():
     # Get unique species values for the selectbox
     species_list = df['SP'].unique().tolist()
 
-    selected_species = st.multiselect('Select Species to see their location', species_list)
+    selected_species = st.selectbox('Select a species to view coordinates', species_list)
 
     # Show a plot of selected species
     if selected_species:
