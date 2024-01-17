@@ -46,7 +46,7 @@ def main():
     # Display the map using st.write()
     folium_static_map(map_pasoh)
 
-    st.title("")
+    st.divider()
 
     col1, col2 = st.columns(2)
 
@@ -56,7 +56,8 @@ def main():
     with col2:
         st.metric("Total number of tree species", "379")
 
-    st.title("")
+    st.divider()
+    
     st.header("Tree Coordinate Map (as of 2021)")
 
     species_data = pd.read_csv('Species Coordinates.csv')
