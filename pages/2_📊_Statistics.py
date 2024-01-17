@@ -29,9 +29,6 @@ def main():
     # Load the dataset
     df = pd.read_csv("DBH Classes.csv")
 
-    # Create a container for the tabs
-    tabs = st.tabs(["2013", "2015", "2017", "2019", "2021", "2023"])
-
     # Create a list of tabs, one for each year
     tabs = st.tabs([str(year) for year in df.columns])
 
