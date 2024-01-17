@@ -29,26 +29,31 @@ def main():
     # Load the dataset
     df = pd.read_csv("DBH Classes.csv")
 
-    # Create a list of years to plot
-    years = [2013, 2015, 2017, 2019, 2021, 2023]
+    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["2013", "2015", "2017", "2019", "2021", "2023"])
 
-    # Create a list of tabs with the year as the label
-    tabs = [st.tabs(str(year)) for year in years]
+    tab1.subheader("Graph of average DBH according to DBH Class in 2013")
+    df1 = df[["DBH Class", "2013"]]
+    tab1.st.line_chart(df1.set_index("DBH Class"))
 
-    # Loop through the tabs and the years
-    for tab, year in zip(tabs, years):
-        # Use the tab as a context manager
-        with tab:
-            # Create a figure and an axis
-            fig, ax = plt.subplots()
-            # Plot the DBH of the year against the DBH class
-            ax.plot(df["DBH Class"], df[str(year)], marker="o")
-            # Set the title and the labels
-            ax.set_title(f"DBH of {year} against the DBH class")
-            ax.set_xlabel("DBH Class")
-            ax.set_ylabel(f"DBH of {year}")
-            # Display the figure using st.pyplot
-            st.pyplot(fig)
+    tab2.subheader("Graph of average DBH according to DBH Class in 2013")
+    df2 = df[["DBH Class", "2015"]]
+    tab2.st.line_chart(df2.set_index("DBH Class"))
+
+    tab3.subheader("Graph of average DBH according to DBH Class in 2013")
+    df3 = df[["DBH Class", "2017"]]
+    tab3.st.line_chart(df3.set_index("DBH Class"))
+
+    tab4.subheader("Graph of average DBH according to DBH Class in 2013")
+    df4 = df[["DBH Class", "2019"]]
+    tab4.st.line_chart(df4.set_index("DBH Class"))
+
+    tab5.subheader("Graph of average DBH according to DBH Class in 2013")
+    df5 = df[["DBH Class", "2021"]]
+    tab5.st.line_chart(df5.set_index("DBH Class"))
+
+    tab6.subheader("Graph of average DBH according to DBH Class in 2013")
+    df6 = df[["DBH Class", "2023"]]
+    tab6.st.line_chart(df6.set_index("DBH Class"))
 
 
 
