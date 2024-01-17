@@ -24,7 +24,7 @@ def map(df):
     # Convert 'SP' column to categorical
     df['SP'] = df['SP'].astype('category')
 
-    fig = px.scatter(df, x='XCO', y='YCO', color='SP')
+    fig = px.scatter(df, x='XCO', y='YCO', color='SP', color_discrete_sequence=px.colors.qualitative.Pastel, labels={'SP':'Species'})
 
     # Update title attributes
     fig.update_layout(
