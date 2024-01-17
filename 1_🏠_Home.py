@@ -2,17 +2,6 @@ import streamlit as st
 import pandas as pd
 import folium
 import plotly.express as px
-from st_pages import Page, show_pages, add_page_title
-
-add_page_title()
-
-show_pages(
-    [
-        Page("Home.py", "Home"),
-        Page("pages/2_Statistics.py", "Statistics"),
-        Page("pages/3_DigitalTwin.py", "Digital Twin"),
-    ]
-)
 
 
 def folium_static_map(m):
