@@ -29,15 +29,26 @@ def main():
     # Load the dataset
     df = pd.read_csv("DBH Classes.csv")
 
-    # Create a list of tabs, one for each year
-    tabs = st.tabs([str(year) for year in df.columns])
+    # Create a list of years to plot
+    years = [2013, 2015, 2017, 2019, 2021, 2023]
 
-    # Loop through the tabs and plot a bar chart for each year
-    for tab in tabs:
+    # Create a list of tabs with the year as the label
+    tabs = [st.tabs(str(year)) for year in years]
+
+    # Loop through the tabs and the years
+    for tab, year in zip(tabs, years):
+        # Use the tab as a context manager
         with tab:
-            year = tab.label # Get the label of the tab
-            st.header(f"Bar chart for {year}")
-            st.bar_chart(df[year])
+            # Create a figure and an axis
+            fig, ax = plt.subplots()
+            # Plot the DBH of the year against the DBH class
+            ax.plot(df["DBH Class"], df[str(year)], marker="o")
+            # Set the title and the labels
+            ax.set_title(f"DBH of {year} against the DBH class")
+            ax.set_xlabel("DBH Class")
+            ax.set_ylabel(f"DBH of {year}")
+            # Display the figure using st.pyplot
+            st.pyplot(fig)
 
 
 
