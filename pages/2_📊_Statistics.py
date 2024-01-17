@@ -1,4 +1,8 @@
 import streamlit as st
 
 def main():
-	st.title('Statistics')
+	st.header('Statistics')
+
+
+if __name__ == "__main__":
+    main()

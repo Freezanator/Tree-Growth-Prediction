@@ -1,4 +1,8 @@
 import streamlit as st
 
 def main():
-	st.title('Digital Twin')
+	st.header('Digital Twin')
+
+
+if __name__ == "__main__":
+    main()
