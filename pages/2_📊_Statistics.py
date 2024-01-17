@@ -30,20 +30,17 @@ def main():
     df = pd.read_csv("DBH Classes.csv")
 
     # Create a container for the tabs
-    tabs = st.tabs(["Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6", "Class 7", "Class 8", "Class 9"])
+    tabs = st.tabs(["2013", "2015", "2017", "2019", "2021", "2023"])
 
-    # Loop through each tab and plot the average DBH for the corresponding class
-    for i in range(1, 10):
-        
-        with tabs[i-1]:
+    # Create a list of tabs, one for each year
+    tabs = st.tabs([str(year) for year in df.columns])
 
-            # Select the row by index
-            row = df.iloc[i-1]
-            # Set the index as the column names
-            row.index = df.columns
-            # Plot the bar chart with a title
-            st.bar_chart(row, use_container_width=True)
-            st.write(f"Bar chart for row {i}")
+    # Loop through the tabs and plot a bar chart for each year
+    for tab in tabs:
+        with tab:
+            year = tab.label # Get the label of the tab
+            st.header(f"Bar chart for {year}")
+            st.bar_chart(df[year])
 
 
 
