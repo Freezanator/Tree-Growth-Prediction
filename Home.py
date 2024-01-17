@@ -75,16 +75,17 @@ def main():
     print(df.columns.str.strip())
 
     # Get unique species values for the selectbox
-    species_list = df['SP'].unique().tolist()
+    species_list = ['ALL'] + df['SP'].unique().tolist()
 
+    # Use selectbox instead of multiselect
     selected_species = st.selectbox('Select a species to view coordinates', species_list)
 
-    # Show a plot of selected species
-    if selected_species:
+    # Show a plot of the selected species
+    if selected_species != 'ALL':
         filtered_df = df[df['SP'] == selected_species]
         map(filtered_df)
     else:
-    # Show a plot of all species
+        # Show a plot of all species
         map(df)
 
 
