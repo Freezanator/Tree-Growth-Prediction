@@ -19,7 +19,6 @@ def main():
 
     # Create a list of lists with the data values
     data = [
-        ["DBH Class", "DBH Range"],
         ["1", "<5 cm"],
         ["2", "5.1-10 cm"],
         ["3", "10.1-20 cm"],
@@ -32,7 +31,7 @@ def main():
     ]
 
     # Create a dataframe from the list of lists
-    df = pd.DataFrame(data)
+    df = pd.DataFrame(data, columns=["DBH Class", "DBH Range"],)
 
     st.dataframe(df, hide_index="True")
 
