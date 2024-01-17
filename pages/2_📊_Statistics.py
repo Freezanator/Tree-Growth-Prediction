@@ -32,8 +32,12 @@ def main():
 
     # Create a dataframe from the list of lists
     df = pd.DataFrame(data, columns=["DBH Class", "DBH Range"],)
-
     st.dataframe(df, hide_index="True")
+
+    st.divider()
+
+    
+
 
 
 if __name__ == "__main__":
