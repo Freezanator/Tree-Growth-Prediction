@@ -31,29 +31,35 @@ def main():
 
     tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["2013", "2015", "2017", "2019", "2021", "2023"])
 
-    tab1.subheader("Graph of average DBH according to DBH Class in 2013")
-    df1 = df[["DBH Class", "2013"]]
-    st.line_chart(df1.set_index("DBH Class"))
+    with tab1:
+        tab1.subheader("Graph of average DBH according to DBH Class in 2013")
+        df1 = df[["DBH Class", "2013"]]
+        st.bar_chart(df1.set_index("DBH Class"))
 
-    tab2.subheader("Graph of average DBH according to DBH Class in 2015")
-    df2 = df[["DBH Class", "2015"]]
-    st.line_chart(df2.set_index("DBH Class"))
+    with tab2:
+        tab2.subheader("Graph of average DBH according to DBH Class in 2015")
+        df2 = df[["DBH Class", "2015"]]
+        st.bar_chart(df2.set_index("DBH Class"))
 
-    tab3.subheader("Graph of average DBH according to DBH Class in 2017")
-    df3 = df[["DBH Class", "2017"]]
-    st.line_chart(df3.set_index("DBH Class"))
+    with tab3:
+        tab3.subheader("Graph of average DBH according to DBH Class in 2017")
+        df3 = df[["DBH Class", "2017"]]
+        st.bar_chart(df3.set_index("DBH Class"))
 
-    tab4.subheader("Graph of average DBH according to DBH Class in 2019")
-    df4 = df[["DBH Class", "2019"]]
-    st.line_chart(df4.set_index("DBH Class"))
+    with tab4:
+        tab4.subheader("Graph of average DBH according to DBH Class in 2019")
+        df4 = df[["DBH Class", "2019"]]
+        st.bar_chart(df4.set_index("DBH Class"))
 
-    tab5.subheader("Graph of average DBH according to DBH Class in 2021")
-    df5 = df[["DBH Class", "2021"]]
-    st.line_chart(df5.set_index("DBH Class"))
+    with tab5:
+        tab5.subheader("Graph of average DBH according to DBH Class in 2021")
+        df5 = df[["DBH Class", "2021"]]
+        st.bar_chart(df5.set_index("DBH Class"))
 
-    tab6.subheader("Graph of average DBH according to DBH Class in 2023")
-    df6 = df[["DBH Class", "2023"]]
-    st.line_chart(df6.set_index("DBH Class"))
+    with tab6:
+        tab6.subheader("Graph of average DBH according to DBH Class in 2023")
+        df6 = df[["DBH Class", "2023"]]
+        st.bar_chart(df6.set_index("DBH Class"))
 
 
 
