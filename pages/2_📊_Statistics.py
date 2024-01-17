@@ -26,7 +26,29 @@ def main():
 
     st.divider()
 
-    
+    # Import streamlit and pandas
+    import streamlit as st
+    import pandas as pd
+
+    # Load the dataset
+    df = pd.read_csv("DBH Classes.csv")
+
+    # Create a container for the tabs
+    tabs = st.tabs(["Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6", "Class 7", "Class 8", "Class 9"])
+
+    # Loop through each tab and plot the average DBH for the corresponding class
+    for i in range(1, 10):
+        with tabs[i-1]:
+
+            # Filter the dataset by the selected DBH class
+            df_class = df[df[f"{i}"] == 1]
+
+            # Calculate the average DBH for each year
+            avg_dbh = df_class.mean(axis=0)[:6]
+
+            # Plot the average DBH over the years
+            st.title(f"Average DBH for class {i}")
+            st.line_chart(avg_dbh)
 
 
 
