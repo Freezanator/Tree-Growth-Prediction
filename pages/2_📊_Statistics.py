@@ -29,26 +29,12 @@ def main():
     # Load the dataset
     df = pd.read_csv("DBH Classes.csv")
 
-    # Create a list of tab names
-    tab_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["2013", "2015", "2017", "2019", "2021", "2023"])
 
-    # Create a list of tabs using st.tabs
-    tabs = st.tabs(tab_names)
-
-    # Loop through the tabs and the df columns
-    for i in range(len(tabs)):
-        # Get the current tab and the corresponding df column
-        tab = tabs[i]
-        col = df.columns[i+1]
-
-        # Use the tab as a context manager
-        with tab:
-            # Create a subheader with the column name
-            tab.subheader(f"Graph of average DBH according to DBH Class in {col}")
-            # Filter the dataframe to only keep the columns for DBH class and the current column
-            df_filtered = df[["DBH Class", col]]
-            # Create a bar chart to show the DBH against DBH class
-            st.bar_chart(df_filtered.set_index("DBH Class"))
+    with tab1:
+        tab1.subheader("Graph of average DBH according to DBH Class in 2013")
+        df1 = df[["Year", "1"]]
+        st.bar_chart(df1.set_index("DBH Class"))
 
 
 
