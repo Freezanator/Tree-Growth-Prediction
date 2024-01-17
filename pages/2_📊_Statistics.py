@@ -34,7 +34,7 @@ def main():
     # Create a dataframe from the list of lists
     df = pd.DataFrame(data)
 
-    st.table(df)
+    st.dataframe(df, hide_index="True")
 
 
 if __name__ == "__main__":
