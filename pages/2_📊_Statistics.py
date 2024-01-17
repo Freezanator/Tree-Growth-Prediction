@@ -38,13 +38,15 @@ def main():
     # Create a tabs container using st.tabs()
     tabs = st.tabs(tab_names)
 
+    y_axis = alt.Y('value', scale=alt.Scale(domain=[0, 100]))
+
     # Loop through each tab and column
     for tab, col in zip(tabs, col_names):
         # Select the tab
         with tab:
             # Create a bar chart using st.bar_chart()
             st.subheader(f"Average DBH of trees in DBH Class {col}")
-            st.bar_chart(df[["Year", col]].set_index("Year"))
+            st.bar_chart(df[["Year", col]].set_index("Year"), y_axis=y_axis)
 
 
 
