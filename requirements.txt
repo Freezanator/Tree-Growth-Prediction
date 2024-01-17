@@ -71,7 +71,7 @@ scipy==1.11.4
 seaborn==0.13.1
 six==1.16.0
 smmap==5.0.1
-st-pages==0.4.5
+st-pages
 stack-data==0.6.3
 streamlit==1.29.0
 tangled-up-in-unicode==0.2.0
