@@ -34,17 +34,16 @@ def main():
 
     # Loop through each tab and plot the average DBH for the corresponding class
     for i in range(1, 10):
+        
         with tabs[i-1]:
 
-            # Filter the dataset by the selected DBH class
-            df_class = df[df[f"{i}"] == 1]
-
-            # Calculate the average DBH for each year
-            avg_dbh = df_class.mean(axis=0)[:6]
-
-            # Plot the average DBH over the years
-            st.title(f"Average DBH for class {i}")
-            st.line_chart(avg_dbh)
+            # Select the row by index
+            row = df.iloc[i-1]
+            # Set the index as the column names
+            row.index = df.columns
+            # Plot the bar chart with a title
+            st.bar_chart(row, use_container_width=True)
+            st.write(f"Bar chart for row {i}")
 
 
 
