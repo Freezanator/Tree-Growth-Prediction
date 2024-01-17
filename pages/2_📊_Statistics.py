@@ -26,10 +26,6 @@ def main():
 
     st.divider()
 
-    # Import streamlit and pandas
-    import streamlit as st
-    import pandas as pd
-
     # Load the dataset
     df = pd.read_csv("DBH Classes.csv")
 
