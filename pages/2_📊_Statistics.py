@@ -29,37 +29,26 @@ def main():
     # Load the dataset
     df = pd.read_csv("DBH Classes.csv")
 
-    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["2013", "2015", "2017", "2019", "2021", "2023"])
+    # Create a list of tab names
+    tab_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
-    with tab1:
-        tab1.subheader("Graph of average DBH according to DBH Class in 2013")
-        df1 = df[["DBH Class", "2013"]]
-        st.bar_chart(df1.set_index("DBH Class"))
+    # Create a list of tabs using st.tabs
+    tabs = st.tabs(tab_names)
 
-    with tab2:
-        tab2.subheader("Graph of average DBH according to DBH Class in 2015")
-        df2 = df[["DBH Class", "2015"]]
-        st.bar_chart(df2.set_index("DBH Class"))
+    # Loop through the tabs and the df columns
+    for i in range(len(tabs)):
+        # Get the current tab and the corresponding df column
+        tab = tabs[i]
+        col = df.columns[i+1]
 
-    with tab3:
-        tab3.subheader("Graph of average DBH according to DBH Class in 2017")
-        df3 = df[["DBH Class", "2017"]]
-        st.bar_chart(df3.set_index("DBH Class"))
-
-    with tab4:
-        tab4.subheader("Graph of average DBH according to DBH Class in 2019")
-        df4 = df[["DBH Class", "2019"]]
-        st.bar_chart(df4.set_index("DBH Class"))
-
-    with tab5:
-        tab5.subheader("Graph of average DBH according to DBH Class in 2021")
-        df5 = df[["DBH Class", "2021"]]
-        st.bar_chart(df5.set_index("DBH Class"))
-
-    with tab6:
-        tab6.subheader("Graph of average DBH according to DBH Class in 2023")
-        df6 = df[["DBH Class", "2023"]]
-        st.bar_chart(df6.set_index("DBH Class"))
+        # Use the tab as a context manager
+        with tab:
+            # Create a subheader with the column name
+            tab.subheader(f"Graph of average DBH according to DBH Class in {col}")
+            # Filter the dataframe to only keep the columns for DBH class and the current column
+            df_filtered = df[["DBH Class", col]]
+            # Create a bar chart to show the DBH against DBH class
+            st.bar_chart(df_filtered.set_index("DBH Class"))
 
 
 
