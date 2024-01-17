@@ -29,12 +29,23 @@ def main():
     # Load the dataset
     df = pd.read_csv("DBH Classes.csv")
 
-    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["2013", "2015", "2017", "2019", "2021", "2023"])
+    # Create a list of tab names
+    tab_names = [f"DBH Class {i}" for i in range(1, 10)]
 
-    with tab1:
-        tab1.subheader("Graph of average DBH according to DBH Class in 2013")
-        df1 = df[["Year", "1"]]
-        st.bar_chart(df1.set_index("DBH Class"))
+    # Create a list of column names
+    col_names = [str(i) for i in range(1, 10)]
+
+    # Create a tabs container using st.tabs()
+    tabs = st.tabs(tab_names)
+
+    # Loop through each tab and column
+    for tab, col in zip(tabs, col_names):
+        # Select the tab
+        with tab:
+            # Create a bar chart using st.bar_chart()
+            st.bar_chart(df[["Year", col]].set_index("Year"))
+            # Add a title and a caption
+            st.write(f"Bar chart of DBH Class {col} against Year")
 
 
 
