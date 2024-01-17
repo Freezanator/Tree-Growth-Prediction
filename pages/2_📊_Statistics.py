@@ -43,7 +43,7 @@ def main():
         # Select the tab
         with tab:
             # Create a bar chart using st.bar_chart()
-            st.subheader(f"Average DBH of trees in {col}")
+            st.subheader(f"Average DBH of trees in DBH Class {col}")
             st.bar_chart(df[["Year", col]].set_index("Year"))
 
 
