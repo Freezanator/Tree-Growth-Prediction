@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import 
 
 def main():
     st.header('Statistics')
@@ -33,27 +34,27 @@ def main():
 
     tab1.subheader("Graph of average DBH according to DBH Class in 2013")
     df1 = df[["DBH Class", "2013"]]
-    tab1.st.line_chart(df1.set_index("DBH Class"))
+    st.line_chart(df1.set_index("DBH Class"))
 
-    tab2.subheader("Graph of average DBH according to DBH Class in 2013")
+    tab2.subheader("Graph of average DBH according to DBH Class in 2015")
     df2 = df[["DBH Class", "2015"]]
-    tab2.st.line_chart(df2.set_index("DBH Class"))
+    st.line_chart(df2.set_index("DBH Class"))
 
-    tab3.subheader("Graph of average DBH according to DBH Class in 2013")
+    tab3.subheader("Graph of average DBH according to DBH Class in 2017")
     df3 = df[["DBH Class", "2017"]]
-    tab3.st.line_chart(df3.set_index("DBH Class"))
+    st.line_chart(df3.set_index("DBH Class"))
 
-    tab4.subheader("Graph of average DBH according to DBH Class in 2013")
+    tab4.subheader("Graph of average DBH according to DBH Class in 2019")
     df4 = df[["DBH Class", "2019"]]
-    tab4.st.line_chart(df4.set_index("DBH Class"))
+    st.line_chart(df4.set_index("DBH Class"))
 
-    tab5.subheader("Graph of average DBH according to DBH Class in 2013")
+    tab5.subheader("Graph of average DBH according to DBH Class in 2021")
     df5 = df[["DBH Class", "2021"]]
-    tab5.st.line_chart(df5.set_index("DBH Class"))
+    st.line_chart(df5.set_index("DBH Class"))
 
-    tab6.subheader("Graph of average DBH according to DBH Class in 2013")
+    tab6.subheader("Graph of average DBH according to DBH Class in 2023")
     df6 = df[["DBH Class", "2023"]]
-    tab6.st.line_chart(df6.set_index("DBH Class"))
+    st.line_chart(df6.set_index("DBH Class"))
 
 
 
