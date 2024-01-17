@@ -77,24 +77,6 @@ def main():
         # Show a plot of all species
         map(df)
 
-    quadrant_data = pd.read_csv('Quadrant Coordinates.csv')
-    df2 = pd.DataFrame(quadrant_data)
-    print(df2.columns.str.strip())
-
-    # Get unique species values for the selectbox
-    quadrant_list = ['ALL'] + sorted(df2['QUAD'].unique().tolist())
-
-    # Use selectbox to select species
-    selected_quadrant = st.selectbox('Select a quadrant to view coordinates', quadrant_list)
-
-    # Show a plot of the selected species
-    if selected_quadrant != 'ALL':
-        filtered_df2 = df2[df2['QUAD'] == selected_quadrant]
-        map(filtered_df2)
-    else:
-        # Show a plot of all species
-        map(df2)
-
 
 if __name__ == "__main__":
     main()
