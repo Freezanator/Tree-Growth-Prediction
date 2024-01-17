@@ -22,7 +22,7 @@ def main():
         "DBH Class": [1, 2, 3, 4, 5, 6, 7, 8, 9],
         "DBH Range": ["<5cm", "5.1-10 cm", "10.1-20 cm","20.1-30 cm","30.1-40 cm","40.1-50 cm","50.1-60 cm","60.1-70 cm",">70 cm"]
     })
-    st.dataframe(df, orient="index")
+    st.dataframe(df, hide_index="True")
 
     st.divider()
 
