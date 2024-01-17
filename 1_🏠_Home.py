@@ -82,14 +82,14 @@ def main():
     print(df2.columns.str.strip())
 
     # Get unique species values for the selectbox
-    quadrant_list = ['ALL'] + sorted(df2['SP'].unique().tolist())
+    quadrant_list = ['ALL'] + sorted(df2['QUAD'].unique().tolist())
 
     # Use selectbox to select species
-    selected_quadrant = st.selectbox('Select a species to view coordinates', quadrant_list)
+    selected_quadrant = st.selectbox('Select a quadrant to view coordinates', quadrant_list)
 
     # Show a plot of the selected species
     if selected_quadrant != 'ALL':
-        filtered_df2 = df2[df2['SP'] == selected_quadrant]
+        filtered_df2 = df2[df2['QUAD'] == selected_quadrant]
         map(filtered_df2)
     else:
         # Show a plot of all species
