@@ -24,6 +24,18 @@ def map(df):
 
     st.plotly_chart(fig)
 
+def set_sidebar_background(image_path):
+    st.markdown(
+        f"""
+        <style>
+        .sidebar .sidebar-content {{
+            background-image: url({image_path});
+            background-size: cover;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
 def main():
     st.header("Introduction")
@@ -78,6 +90,9 @@ def main():
     else:
         # Show a plot of all species
         map(df)
+
+    # Set the sidebar background
+    set_sidebar_background('Slides 1-1.png')
 
 
 if __name__ == "__main__":
