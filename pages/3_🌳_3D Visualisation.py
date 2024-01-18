@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 
 def main():
-    st.header('Digital Twin')
+    st.header('3D Visualisation')
 
     # Load your dataset
     data = pd.read_csv('Data Pasoh TrainTest Featured OneZero.csv')
@@ -44,11 +44,11 @@ def main():
         # Update layout for larger plot
         fig.update_layout(
             scene=dict(
-                xaxis_title='XCO Title',
-                yaxis_title='YCO Title',
+                xaxis_title='X-Coordinate',
+                yaxis_title='Y-Coordinate',
                 zaxis_title='Tree DBH',
             ),
-            title='3D Tree Locations with Heights and Lines Representing Tree Heights',
+            title='3D Tree Locations Representing Tree DBH',
             width=800,  # Adjust the width of the plot
             height=800,  # Adjust the height of the plot
         )
@@ -56,11 +56,11 @@ def main():
         st.plotly_chart(fig, key=key)
 
     # Dropdown to select species
-    selected_species = st.multiselect('Select Species to see their 3D location with height (Excluding DBH=0)',
+    selected_species = st.multiselect('Select species to view their DBH in 3D',
                                     species_list, key='unique_key')
 
     if selected_species:
-        filtered_df = data[data['Species'].isin(selected_species)]
+        filtered_df = data[data['SPECIES'].isin(selected_species)]
         mapshow_3d_with_line(filtered_df, key='unique_chart')
     else:
         mapshow_3d_with_line(data, key='unique_chart')
