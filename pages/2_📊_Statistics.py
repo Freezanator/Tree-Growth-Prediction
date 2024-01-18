@@ -18,23 +18,25 @@ def main():
     # Load the dataset
     df = pd.read_csv('Species Growth.csv')
 
-    # Streamlit interface
-    st.title('Species Growth Data Visualization')
-
+    st.header("Growth Rates by Species")
+    
     # Dropdown for species selection
     species = st.selectbox('Select a Species', df['SPECIES'].unique())
 
     # Filter the dataframe based on the selected species
     filtered_df = df[df['SPECIES'] == species]
 
-    # Calculate the average values for GROWTH1315 and GROWTH1517
+    # Calculate the average values for each growth period
     average_growth1315 = filtered_df['GROWTH1315'].mean()
     average_growth1517 = filtered_df['GROWTH1517'].mean()
+    average_growth1719 = filtered_df['GROWTH1719'].mean()
+    average_growth1921 = filtered_df['GROWTH1921'].mean()
+    average_growth2123 = filtered_df['GROWTH2123'].mean()
 
     # Preparing data for line chart
     chart_data = pd.DataFrame({
-        'Growth Period': ['GROWTH1315', 'GROWTH1517'],
-        'Average DBH': [average_growth1315, average_growth1517]
+        'Growth Period': ['Growth 2013 - 2015', 'Growth 2015 - 2017', 'Growth 2017 - 2019', 'Growth 2019 - 2021', 'Growth 2021 - 2023'],
+        'Average DBH': [average_growth1315, average_growth1517, average_growth1719, average_growth1921, average_growth2123]
     })
 
     # Display the line chart
