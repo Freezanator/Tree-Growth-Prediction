@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import altair as alt
 
 def main():
     st.header('Statistics')
@@ -15,25 +16,29 @@ def main():
 
     st.divider()
 
-    df = pd.read_csv("Species Growth.csv")
+   # Load the dataset
+    df = pd.read_csv('Growth Species.csv')
 
-    # Get the unique species names
-    species = df["SPECIES"].unique()
+    # Create a list of unique species names
+    species = df['SPECIES'].unique()
 
-    # Create a sidebar widget to select a species
-    selected_species = st.sidebar.selectbox("Select a species", species)
+    # Create a drop-down menu to select a species
+    selected_species = st.sidebar.selectbox('Select a species', species)
 
     # Filter the dataframe by the selected species
-    df_species = df[df["SPECIES"] == selected_species]
+    df = df[df['SPECIES'] == selected_species]
 
-    # Calculate the average growth for each category
-    avg_growth = df_species.mean()
+    # Calculate the average growth for each period
+    df = df.groupby('SPECIES').mean()
 
-    # Drop the species column from the average growth series
-    avg_growth = avg_growth.drop("SPECIES")
+    # Create a line chart object
+    line_chart = alt.Chart(df).mark_line().encode(
+        x = alt.X(df.columns, title = 'Period'),
+        y = alt.Y('mean()', title = 'Average Growth')
+    )
 
-    # Create a bar chart with the average growth data
-    st.bar_chart(avg_growth)
+    # Display the line chart in the app
+    st.altair_chart(line_chart)
 
     st.divider()
 
