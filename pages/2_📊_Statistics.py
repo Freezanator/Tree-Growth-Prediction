@@ -17,7 +17,7 @@ def main():
     st.divider()
 
    # Load the dataset
-    df = pd.read_csv('Growth Species.csv')
+    df = pd.read_csv('Species Growth.csv')
 
     # Create a list of unique species names
     species = df['SPECIES'].unique()
