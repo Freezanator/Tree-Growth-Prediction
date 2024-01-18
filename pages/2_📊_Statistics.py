@@ -30,7 +30,7 @@ def main():
     filtered_df = filtered_df.drop(columns=["SPECIES"])
 
     # Calculate the average of each column for the selected species
-    filtered_df = filtered_df.mean
+    filtered_df = filtered_df.mean()
 
     # Transpose the data frame to make the columns the index
     filtered_df = filtered_df.to_frame().T
