@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 
 def main():
     st.header('Statistics')
@@ -16,7 +15,7 @@ def main():
 
     st.divider()
 
-   # Load the dataset
+    # Load the dataset
     df = pd.read_csv('Species Growth.csv')
 
     # Streamlit interface
@@ -32,15 +31,14 @@ def main():
     average_growth1315 = filtered_df['GROWTH1315'].mean()
     average_growth1517 = filtered_df['GROWTH1517'].mean()
 
-    # Plotting
-    fig, ax = plt.subplots()
-    ax.plot(['GROWTH1315', 'GROWTH1517'], [average_growth1315, average_growth1517], marker='o')
-    ax.set_xlabel('Growth Period')
-    ax.set_ylabel('Average DBH')
-    ax.set_title(f'Average Growth for {species}')
+    # Preparing data for line chart
+    chart_data = pd.DataFrame({
+        'Growth Period': ['GROWTH1315', 'GROWTH1517'],
+        'Average DBH': [average_growth1315, average_growth1517]
+    })
 
-    # Show the plot
-    st.pyplot(fig)
+    # Display the line chart
+    st.line_chart(chart_data.set_index('Growth Period'))
 
     st.divider()
 
