@@ -15,6 +15,25 @@ def main():
 
     st.divider()
 
+    df = pd.read_csv("Growth.csv")
+
+    # Rename the columns to the desired labels
+    df.columns = [
+        "Growth 2013 - 2015",
+        "Growth 2015 - 2017",
+        "Growth 2017 - 2019",
+        "Growth 2019 - 2021",
+        "Growth 2021 - 2023 (Predicted)",
+    ]
+
+    # Transpose the data frame to make the labels the index
+    df = df.T
+
+    # Create a bar chart using st.bar_chart()
+    st.bar_chart(df)
+
+    st.divider()
+
     st.write("The trees are classfied into the following 9 DBH classes:")
 
     # Create a dataframe from the list of lists
