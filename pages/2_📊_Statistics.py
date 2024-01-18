@@ -17,26 +17,23 @@ def main():
 
     df = pd.read_csv("Species Growth.csv")
 
-    # Create a list of species names
-    species = df["SPECIES"].unique().tolist()
+    # Get the unique species names
+    species = df["SPECIES"].unique()
 
-    # Create a selectbox to choose a species
-    selected_species = st.selectbox("Select a species", species)
+    # Create a sidebar widget to select a species
+    selected_species = st.sidebar.selectbox("Select a species", species)
 
-    # Filter the data frame by the selected species
-    filtered_df = df[df["SPECIES"] == selected_species]
+    # Filter the dataframe by the selected species
+    df_species = df[df["SPECIES"] == selected_species]
 
-    # Drop the species column
-    filtered_df = filtered_df.drop(columns=["SPECIES"])
+    # Calculate the average growth for each category
+    avg_growth = df_species.mean()
 
-    # Calculate the average of each column for the selected species
-    filtered_df = filtered_df.mean()
+    # Drop the species column from the average growth series
+    avg_growth = avg_growth.drop("SPECIES")
 
-    # Transpose the data frame to make the columns the index
-    filtered_df = filtered_df.to_frame().T
-
-    # Create a bar chart using st.bar_chart()
-    st.bar_chart(filtered_df)
+    # Create a bar chart with the average growth data
+    st.bar_chart(avg_growth)
 
     st.divider()
 
