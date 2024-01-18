@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import altair as alt
 
 def main():
     st.header('Statistics')
@@ -39,16 +38,15 @@ def main():
     # Create a tabs container using st.tabs()
     tabs = st.tabs(tab_names)
 
-    y_axis = alt.Y('value', scale=alt.Scale(domain=[0, 100]))
-
     # Loop through each tab and column
     for tab, col in zip(tabs, col_names):
         # Select the tab
         with tab:
             # Create a bar chart using st.bar_chart()
             st.subheader(f"Average DBH of trees in DBH Class {col}")
-            chart = alt.Chart(df).mark_bar().encode(x='Year', y=y_axis)
-            st.altair_chart(chart)
+            st.bar_chart(df[["Year", col]].set_index("Year"))
+
+
 
 if __name__ == "__main__":
     main()
