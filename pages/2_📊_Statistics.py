@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import altair as alt
+import matplotlib.pyplot as plt
 
 def main():
     st.header('Statistics')
@@ -19,26 +19,28 @@ def main():
    # Load the dataset
     df = pd.read_csv('Species Growth.csv')
 
-    # Create a list of unique species names
-    species = df['SPECIES'].unique()
+    # Streamlit interface
+    st.title('Species Growth Data Visualization')
 
-    # Create a drop-down menu to select a species
-    selected_species = st.sidebar.selectbox('Select a species', species)
+    # Dropdown for species selection
+    species = st.selectbox('Select a Species', df['SPECIES'].unique())
 
-    # Filter the dataframe by the selected species
-    df = df[df['SPECIES'] == selected_species]
+    # Filter the dataframe based on the selected species
+    filtered_df = df[df['SPECIES'] == species]
 
-    # Calculate the average growth for each period
-    df = df.groupby('SPECIES').mean()
+    # Calculate the average values for GROWTH1315 and GROWTH1517
+    average_growth1315 = filtered_df['GROWTH1315'].mean()
+    average_growth1517 = filtered_df['GROWTH1517'].mean()
 
-    # Create a line chart object
-    line_chart = alt.Chart(df).mark_line().encode(
-        x = alt.X(df.columns, title = 'Period'),
-        y = alt.Y('mean()', title = 'Average Growth')
-    )
+    # Plotting
+    fig, ax = plt.subplots()
+    ax.plot(['GROWTH1315', 'GROWTH1517'], [average_growth1315, average_growth1517], marker='o')
+    ax.set_xlabel('Growth Period')
+    ax.set_ylabel('Average DBH')
+    ax.set_title(f'Average Growth for {species}')
 
-    # Display the line chart in the app
-    st.altair_chart(line_chart)
+    # Show the plot
+    st.pyplot(fig)
 
     st.divider()
 
