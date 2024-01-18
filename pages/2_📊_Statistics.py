@@ -17,20 +17,26 @@ def main():
 
     df = pd.read_csv("Growth.csv")
 
-    # Rename the columns to the desired labels
-    df.columns = [
-        "Growth 2013 - 2015",
-        "Growth 2015 - 2017",
-        "Growth 2017 - 2019",
-        "Growth 2019 - 2021",
-        "Growth 2021 - 2023 (Predicted)",
-    ]
+    # Create a list of species names
+    species = df["SPECIES"].unique().tolist()
 
-    # Transpose the data frame to make the labels the index
-    df = df.T
+    # Create a selectbox to choose a species
+    selected_species = st.selectbox("Select a species", species)
+
+    # Filter the data frame by the selected species
+    filtered_df = df[df["SPECIES"] == selected_species]
+
+    # Drop the species column
+    filtered_df = filtered_df.drop(columns=["SPECIES"])
+
+    # Calculate the average of each column for the selected species
+    filtered_df = filtered_df.mean()
+
+    # Transpose the data frame to make the columns the index
+    filtered_df = filtered_df.to_frame().T
 
     # Create a bar chart using st.bar_chart()
-    st.bar_chart(df)
+    st.bar_chart(filtered_df)
 
     st.divider()
 
