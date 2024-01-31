@@ -44,7 +44,7 @@ def main():
     # Display the plot chart based on the button clicked
     if button1:
         # Load data from csv
-        df = pd.read_csv ("data.csv")
+        df = pd.read_csv ('Graph Low Trees.csv')
 
         # Transform data to long format
         df_long = pd.melt (df, id_vars= ["DBH Class"], value_vars= ["Harvested", "Remaining"], var_name= "Legend", value_name= "Count")
