@@ -12,17 +12,6 @@ def main():
 
     st.divider()
 
-    st.write("The trees are classfied into the following 9 DBH classes:")
-
-    # Create a dataframe from the list of lists
-    df = pd.DataFrame({
-        "DBH Class": [1, 2, 3, 4, 5, 6, 7, 8, 9],
-        "DBH Range": ["<5cm", "5.1-10 cm", "10.1-20 cm","20.1-30 cm","30.1-40 cm","40.1-50 cm","50.1-60 cm","60.1-70 cm",">70 cm"]
-    })
-    st.dataframe(df, hide_index="True")
-
-    st.divider()
-
     st.write("Select a type of silvicultural thinning.")
 
     tab1, tab2 = st.tabs(['Low Thinning', 'Crown Thinning'])
