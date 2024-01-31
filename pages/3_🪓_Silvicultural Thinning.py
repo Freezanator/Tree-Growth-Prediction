@@ -23,4 +23,7 @@ def main():
 
     tab1, tab2 = st.tabs(['Low Thinning', 'Crown Thinning'])
 
-    
+
+
+if __name__ == "__main__":
+    main()
