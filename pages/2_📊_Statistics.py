@@ -74,6 +74,25 @@ def main():
             # Create a bar chart using st.bar_chart()
             st.subheader(f"Average DBH of trees in DBH Class {col}")
             st.bar_chart(df[["Year", col]].set_index("Year"))
+    
+    st.divider()
+
+    # Read the csv files
+    df_2013 = pd.read_csv('DBH2013.csv')
+    df_2015 = pd.read_csv('DBH2015.csv')
+
+    # Create a tab selector
+    tab = st.sidebar.selectbox('Select a year', ['2013', '2015'])
+
+    # Display the selected tab
+    st.title(f'DBH Class Distribution in {tab}')
+
+    # Create a bar chart based on the selected tab
+    if tab == '2013':
+        st.bar_chart(df_2013.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
+    else:
+        st.bar_chart(df_2015.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
+
 
 
 
