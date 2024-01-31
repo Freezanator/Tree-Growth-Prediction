@@ -8,7 +8,7 @@ def map(df2):
     # Convert 'SP' column to categorical
     df2['SPECIES'] = df2['SPECIES'].astype('category')
 
-    fig = px.scatter(df2, x='XCO', y='YCO', color='SPECIES', color_discrete_sequence=px.colors.qualitative.Pastel, labels={'SPECIES':'Species', 'DBH2021':'DBH', 'GROWTH1921':'Growth', 'CLASS2021':'DBH Class'})
+    fig = px.scatter(df2, x='XCO', y='YCO', color='SPECIES', color_discrete_sequence=px.colors.qualitative.Pastel, labels={'SPECIES':'Species'}, hover_data={'DBH2021':'DBH', 'GROWTH1921':'Growth', 'CLASS2021':'DBH Class'})
 
     # Update title attributes
     fig.update_layout(
