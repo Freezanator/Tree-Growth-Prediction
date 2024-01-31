@@ -46,18 +46,18 @@ def main():
         # Load data from csv
         df = pd.read_csv ('Graph Low Trees.csv')
 
-        # Transform data to long format
-        df_long = pd.melt (df, id_vars= ["DBH Class"], value_vars= ["Harvested", "Remaining"], var_name= "Legend", value_name= "Count")
+        # Melt the dataframe to long format
+        df_long = pd.melt(df, id_vars="DBH Class", value_vars=["Harvested", "Remaining"], var_name="Count", value_name="Value")
 
-        # Create Altair chart
-        chart = alt.Chart (df_long).mark_bar ().encode (
-            x= alt.X ("DBH Class:N", sort= alt.Sort (order= "descending")), # Use DBH Class as x axis and sort in descending order
-            y= alt.Y ("Count:Q", stack= "zero"), # Use Count as y axis and stack by zero baseline
-            color= alt.Color ("Year:N") # Use Year as color
+        # Create the stacked bar chart using Altair
+        chart = alt.Chart(df_long).mark_bar().encode(
+            x=alt.X("DBH Class:N", title="DBH Class"),
+            y=alt.Y("Value:Q", title="Count"),
+            color=alt.Color("Count:N", title="Count")
         )
 
-        # Display chart in Streamlit
-        st.altair_chart (chart, use_container_width= True)
+        # Display the chart using Streamlit
+        st.altair_chart(chart, use_container_width=True)
 
 
     elif button2:
