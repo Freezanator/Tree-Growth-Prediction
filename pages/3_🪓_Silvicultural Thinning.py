@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 def main():
     st.header("Silvicultural Thinning")
