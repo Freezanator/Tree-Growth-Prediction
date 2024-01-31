@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 
 def main():
-    st.header('3D Visualisation')
+    st.title("3D Visualisation")
 
     # Load your dataset
     data = pd.read_csv('Data Pasoh TrainTest Featured OneZero.csv')

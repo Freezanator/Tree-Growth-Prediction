@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 def main():
-    st.header('Statistics')
+    st.title("Statistics")
 
     st.title("")
     col1, col2 = st.columns(2)
