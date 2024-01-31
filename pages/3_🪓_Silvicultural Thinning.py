@@ -30,8 +30,6 @@ def main():
     st.write('Silvicultural thinning is an operation where the main objective is to reduce the density of trees in a stand, improve the quality and growth of the remaining trees and produce a saleable product. Thinning can also achieve other objectives such as altering the species composition of a stand, improving the health of the remaining trees or disturbing an established ground flora to enhance opportunities for natural regeneration.')
 
     st.divider()
-
-    st.write('Please select a type of silvicultural thinning.')
     
     # Load the CSV files
     low_trees = pd.read_csv('Plot Low Trees.csv')
@@ -48,6 +46,7 @@ def main():
         st.write('Low thinning is a method of thinning that removes the smallest and weakest trees in a stand. The purpose of low thinning is to improve the growth and quality of the remaining trees by reducing competition for light, water, and nutrients. Low thinning is suitable for shade-tolerant species that can grow well under a closed canopy.')
 
         st.divider()
+
         # Load data from csv
         df = pd.read_csv ('Graph Low Trees.csv')
 
@@ -84,6 +83,8 @@ def main():
         # Display the chart using Streamlit
         st.altair_chart(chart, use_container_width=True)
 
+    else:
+        st.write('Please select a type of silvicultural thinning.')
 
 if __name__ == '__main__':
     main()
