@@ -44,20 +44,21 @@ def main():
     # Display the plot chart based on the button clicked
     if button1:
         # Load data from csv
-        df = pd.read_csv ("Graph Low Trees.csv")
+        df = pd.read_csv ("data.csv")
 
         # Transform data to long format
-        df_long = pd.melt (df, id_vars= ["DBH Class"], value_vars= ["Harvested", "Remaining"], var_name= "Year", value_name= "Count")
+        df_long = pd.melt (df, id_vars= ["DBH Class"], value_vars= ["Harvested", "Remaining"], var_name= "Legend", value_name= "Count")
 
         # Create Altair chart
         chart = alt.Chart (df_long).mark_bar ().encode (
-            x= alt.X ("Count:Q", stack= "zero"), # Use zero baseline for stacking
-            y= alt.Y ("DBH Class:N", sort= alt.Sort (order= "descending")), # Sort by DBH Class in descending order
+            x= alt.X ("DBH Class:N", sort= alt.Sort (order= "descending")), # Use DBH Class as x axis and sort in descending order
+            y= alt.Y ("Count:Q", stack= "zero"), # Use Count as y axis and stack by zero baseline
             color= alt.Color ("Year:N") # Use Year as color
         )
 
         # Display chart in Streamlit
         st.altair_chart (chart, use_container_width= True)
+
 
     elif button2:
         fig = px.line(crown_trees, x='x', y='y', title='Crown Thinning Plot')
