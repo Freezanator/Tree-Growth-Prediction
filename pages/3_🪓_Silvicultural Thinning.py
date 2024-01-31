@@ -12,27 +12,24 @@ def main():
 
     st.divider()
 
-    st.write("Select a type of silvicultural thinning.")
-
-    tab1, tab2 = st.tabs(['Low Thinning', 'Crown Thinning'])
-
     # Load the CSV files
     low_trees = pd.read_csv('Plot Low Trees.csv')
     crown_trees = pd.read_csv('Plot Crown Trees.csv')
 
-    # Create the buttons
-    low_button = st.button('Low Thinning')
-    crown_button = st.button('Crown Thinning')
+    col1, col2 = st.columns(2) # Create two columns
+    button1 = col1.button('Low Thinning') # Assign the first button to the first column
+    button2 = col2.button('Crown Thinning') # Assign the second button to the second column
+
 
     # Display the plot chart based on the button clicked
-    if low_button:
+    if button1:
         fig = px.line(low_trees, x='x', y='y', title='Low Thinning Plot')
         st.plotly_chart(fig)
-    elif crown_button:
+    elif button2:
         fig = px.line(crown_trees, x='x', y='y', title='Crown Thinning Plot')
         st.plotly_chart(fig)
     else:
-        st.write('Please select a button to see the plot chart.')
+        st.write('Select a type of silvicultural thinning.')
 
 
 
