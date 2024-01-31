@@ -43,6 +43,8 @@ def main():
 
     # Display the plot chart based on the button clicked
     if button1:
+        st.write("Low thinning is a method of thinning that removes the smallest and weakest trees in a stand. The purpose of low thinning is to improve the growth and quality of the remaining trees by reducing competition for light, water, and nutrients. Low thinning is suitable for shade-tolerant species that can grow well under a closed canopy.")
+
         # Load data from csv
         df = pd.read_csv ('Graph Low Trees.csv')
 
@@ -61,6 +63,8 @@ def main():
 
 
     elif button2:
+        st.write("Crown thinning is a method of thinning that removes most dominant and co-dominant trees from a stand. The aim of a crown thinning is to give smaller trees freedom to grow rapidly by gradually removing competing dominant trees.")
+
         # Load data from csv
         df = pd.read_csv ('Graph Crown Trees.csv')
 
