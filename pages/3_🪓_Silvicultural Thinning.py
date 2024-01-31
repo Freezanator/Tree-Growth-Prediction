@@ -12,6 +12,8 @@ def main():
 
     st.divider()
 
+    st.write("Please select a type of silvicultural thinning.")
+    
     # Load the CSV files
     low_trees = pd.read_csv('Plot Low Trees.csv')
     crown_trees = pd.read_csv('Plot Crown Trees.csv')
@@ -28,8 +30,6 @@ def main():
     elif button2:
         fig = px.line(crown_trees, x='x', y='y', title='Crown Thinning Plot')
         st.plotly_chart(fig)
-    else:
-        st.write('Select a type of silvicultural thinning.')
 
 
 
