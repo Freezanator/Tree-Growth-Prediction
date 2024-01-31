@@ -84,9 +84,6 @@ def main():
     # Create a tab container
     tab1, tab2 = st.tabs(['2013', '2015'])
 
-    # Display the selected tab
-    st.title(f'DBH Class Distribution in {tabs}')
-
     # Create a bar chart based on the selected tab
     with tab1:
         st.bar_chart(df_2013.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
