@@ -4,7 +4,8 @@ import pandas as pd
 def main():
     st.title("Statistics")
 
-    st.title("")
+    st.divider()
+    
     col1, col2 = st.columns(2)
 
     with col1:

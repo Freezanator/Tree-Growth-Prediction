@@ -6,6 +6,8 @@ import plotly.express as px
 def main():
     st.title("3D Visualisation")
 
+    st.divider()
+    
     # Load your dataset
     data = pd.read_csv('Data Pasoh TrainTest Featured OneZero.csv')
     data = data[['SPECIES', 'XCO', 'YCO', 'DBH2021', 'CLASS2021']]  # Considering 'DBH' as the column for Diameter at Breast Height
