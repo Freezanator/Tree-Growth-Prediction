@@ -16,6 +16,24 @@ def main():
 
     tab1, tab2 = st.tabs(['Low Thinning', 'Crown Thinning'])
 
+    # Load the CSV files
+    low_trees = pd.read_csv('Plot Low Trees.csv')
+    crown_trees = pd.read_csv('Plot Crown Trees.csv')
+
+    # Create the buttons
+    low_button = st.button('Low Thinning')
+    crown_button = st.button('Crown Thinning')
+
+    # Display the plot chart based on the button clicked
+    if low_button:
+        fig = px.line(low_trees, x='x', y='y', title='Low Thinning Plot')
+        st.plotly_chart(fig)
+    elif crown_button:
+        fig = px.line(crown_trees, x='x', y='y', title='Crown Thinning Plot')
+        st.plotly_chart(fig)
+    else:
+        st.write('Please select a button to see the plot chart.')
+
 
 
 if __name__ == "__main__":
