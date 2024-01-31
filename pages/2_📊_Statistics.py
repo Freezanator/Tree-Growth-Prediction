@@ -20,7 +20,7 @@ def main():
     # Load the dataset
     df = pd.read_csv('Species Growth.csv')
 
-    st.header("Growth Rates by Species")
+    st.subheader("Growth Rates by Species")
     
     # Dropdown for species selection
     species = st.selectbox('Select a Species', df['SPECIES'].unique())
@@ -57,7 +57,7 @@ def main():
 
     st.divider()
 
-    st.header("Tree Count in each DBH Class by Year")
+    st.subheader("Tree Count in each DBH Class by Year")
 
     # Read the csv files
     df_2013 = pd.read_csv('DBH2013.csv')
