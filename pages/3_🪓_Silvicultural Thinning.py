@@ -8,14 +8,7 @@ def map(df2):
     # Convert 'SP' column to categorical
     df2['SPECIES'] = df2['SPECIES'].astype('category')
 
-    # Add custom hover data
-    hover_data1 = {
-        'DBH2021': 'DBH',
-        'GROWTH1921': 'Growth Rate',
-        'CLASS2021': 'DBH Class'
-    }
-
-    fig = px.scatter(df2, x='XCO', y='YCO', color='SPECIES', color_discrete_sequence=px.colors.qualitative.Pastel, labels={'SPECIES':'Species'}, hover_data=hover_data1)
+    fig = px.scatter(df2, x='XCO', y='YCO', color='SPECIES', color_discrete_sequence=px.colors.qualitative.Pastel, labels={'SPECIES':'Species'})
 
     # Update title attributes
     fig.update_layout(
@@ -73,13 +66,19 @@ def main():
         map(df2)
 
     elif button2:
+        st.subheader('What is Crown Thinning?')
+
         st.write('Crown thinning is a method of thinning that removes most dominant and co-dominant trees from a stand. The aim of a crown thinning is to give smaller trees freedom to grow rapidly by gradually removing competing dominant trees.')
 
+        st.divider()
+
+        st.subheader('DBH Class Distribution after Crown Thinning')
+
         # Load data from csv
-        df = pd.read_csv ('Graph Crown Trees.csv')
+        df1 = pd.read_csv ('Graph Crown Trees.csv')
 
         # Melt the dataframe to long format
-        df_long = pd.melt(df, id_vars='DBH Class', value_vars=['Harvested', 'Remaining'], var_name='Count', value_name='Value')
+        df_long = pd.melt(df1, id_vars='DBH Class', value_vars=['Harvested', 'Remaining'], var_name='Count', value_name='Value')
 
         # Create the stacked bar chart using Altair
         chart = alt.Chart(df_long).mark_bar().encode(
@@ -90,6 +89,10 @@ def main():
 
         # Display the chart using Streamlit
         st.altair_chart(chart, use_container_width=True)
+
+        crowntrees = pd.read_csv('Plot Crown Trees.csv')
+        df2 = pd.DataFrame(crowntrees)
+        map(df2)
 
     else:
         st.write('Please select a type of silvicultural thinning.')
