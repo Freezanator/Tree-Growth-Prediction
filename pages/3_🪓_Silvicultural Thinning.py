@@ -9,12 +9,12 @@ def map(df2):
     df2['SPECIES'] = df2['SPECIES'].astype('category')
 
     # Add custom hover data
-    hover_data = {
+    hover_data1 = {
         'Growth': 'Growth Rate',
         'DBH': 'Diameter at Breast Height'
     }
-    
-    fig = px.scatter(df2, x='XCO', y='YCO', color='SPECIES', color_discrete_sequence=px.colors.qualitative.Pastel, labels={'SPECIES':'Species'}, hover_data=hover_data)
+
+    fig = px.scatter(df2, x='XCO', y='YCO', color='SPECIES', color_discrete_sequence=px.colors.qualitative.Pastel, labels={'SPECIES':'Species'}, hover_data=hover_data1)
 
     # Update title attributes
     fig.update_layout(
