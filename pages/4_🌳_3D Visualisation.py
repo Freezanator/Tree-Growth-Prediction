@@ -7,7 +7,7 @@ def main():
     st.title("3D Visualisation")
 
     st.divider()
-    
+
     # Load your dataset
     data = pd.read_csv('Data Pasoh TrainTest Featured OneZero.csv')
     data = data[['SPECIES', 'XCO', 'YCO', 'DBH2021', 'CLASS2021']]  # Considering 'DBH' as the column for Diameter at Breast Height
@@ -58,8 +58,7 @@ def main():
         st.plotly_chart(fig, key=key)
 
     # Dropdown to select species
-    selected_species = st.multiselect('Select species to view their DBH in 3D',
-                                    species_list, key='unique_key')
+    selected_species = st.multiselect('Select species to view their DBH, Location and other details in 3D', species_list, key='unique_key')
 
     if selected_species:
         filtered_df = data[data['SPECIES'].isin(selected_species)]
