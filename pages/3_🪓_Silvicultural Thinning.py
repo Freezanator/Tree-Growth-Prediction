@@ -4,15 +4,15 @@ import plotly.express as px
 import altair as alt
 
 
-def map(df):
+def map(df2):
     # Convert 'SP' column to categorical
-    df['SP'] = df['SP'].astype('category')
+    df2['SP'] = df2['SP'].astype('category')
 
-    fig = px.scatter(df, x='XCO', y='YCO', color='SP', color_discrete_sequence=px.colors.qualitative.Pastel, labels={'SP':'Species'})
+    fig = px.scatter(df2, x='XCO', y='YCO', color='SP', color_discrete_sequence=px.colors.qualitative.Pastel, labels={'SP':'Species'})
 
     # Update title attributes
     fig.update_layout(
-        title='Coordinates of Trees in 2021',
+        title='Coordinates of Trees to be Harvested',
         xaxis_title='X-Coordinate',
         yaxis_title='Y-Coordinate'
     )
@@ -30,10 +30,6 @@ def main():
     st.write('Silvicultural thinning is an operation where the main objective is to reduce the density of trees in a stand, improve the quality and growth of the remaining trees and produce a saleable product. Thinning can also achieve other objectives such as altering the species composition of a stand, improving the health of the remaining trees or disturbing an established ground flora to enhance opportunities for natural regeneration.')
 
     st.divider()
-    
-    # Load the CSV files
-    low_trees = pd.read_csv('Plot Low Trees.csv')
-    crown_trees = pd.read_csv('Plot Crown Trees.csv')
 
     col1, col2 = st.columns(2) # Create two columns
     button1 = col1.button('Low Thinning') # Assign the first button to the first column
@@ -48,12 +44,12 @@ def main():
         st.divider()
 
         st.subheader('DBH Class Distribution after Low Thinning')
-        
+
         # Load data from csv
-        df = pd.read_csv ('Graph Low Trees.csv')
+        df1 = pd.read_csv ('Graph Low Trees.csv')
 
         # Melt the dataframe to long format
-        df_long = pd.melt(df, id_vars='DBH Class', value_vars=['Harvested', 'Remaining'], var_name='Count', value_name='Value')
+        df_long = pd.melt(df1, id_vars='DBH Class', value_vars=['Harvested', 'Remaining'], var_name='Count', value_name='Value')
 
         # Create the stacked bar chart using Altair
         chart = alt.Chart(df_long).mark_bar().encode(
@@ -65,6 +61,9 @@ def main():
         # Display the chart using Streamlit
         st.altair_chart(chart, use_container_width=True)
 
+        lowtrees = pd.read_csv('Plot Low Trees.csv')
+        df2 = pd.DataFrame(lowtrees)
+        map(df2)
 
     elif button2:
         st.write('Crown thinning is a method of thinning that removes most dominant and co-dominant trees from a stand. The aim of a crown thinning is to give smaller trees freedom to grow rapidly by gradually removing competing dominant trees.')
