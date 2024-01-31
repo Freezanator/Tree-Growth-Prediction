@@ -90,21 +90,27 @@ def main():
 
     # Create a bar chart based on the selected tab
     with tab1:
+        st.subheader(f"Count of trees in each DBH class in 2013")
         st.bar_chart(df_2013.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
     
     with tab2:
+        st.subheader(f"Count of trees in each DBH class in 2015")
         st.bar_chart(df_2015.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
 
     with tab3:
+        st.subheader(f"Count of trees in each DBH class in 2017")
         st.bar_chart(df_2017.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
 
     with tab4:
+        st.subheader(f"Count of trees in each DBH class in 2019")
         st.bar_chart(df_2019.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
 
     with tab5:
+        st.subheader(f"Count of trees in each DBH class in 2021")
         st.bar_chart(df_2021.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
 
     with tab6:
+        st.subheader(f"Count of trees in each DBH class in 2023 (Predicted)")
         st.bar_chart(df_2023.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
 
 
