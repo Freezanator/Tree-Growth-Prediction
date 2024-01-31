@@ -55,28 +55,6 @@ def main():
 
     st.divider()
 
-    # Load the dataset
-    df = pd.read_csv("DBH Classes.csv")
-
-    # Create a list of tab names
-    tab_names = [f"DBH Class {i}" for i in range(1, 10)]
-
-    # Create a list of column names
-    col_names = [str(i) for i in range(1, 10)]
-
-    # Create a tabs container using st.tabs()
-    tabs = st.tabs(tab_names)
-
-    # Loop through each tab and column
-    for tab, col in zip(tabs, col_names):
-        # Select the tab
-        with tab:
-            # Create a bar chart using st.bar_chart()
-            st.subheader(f"Average DBH of trees in DBH Class {col}")
-            st.bar_chart(df[["Year", col]].set_index("Year"))
-    
-    st.divider()
-
     # Read the csv files
     df_2013 = pd.read_csv('DBH2013.csv')
     df_2015 = pd.read_csv('DBH2015.csv')
