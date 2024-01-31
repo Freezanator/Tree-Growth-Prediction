@@ -13,15 +13,14 @@ def main():
     st.divider()
 
     st.write("Please select a type of silvicultural thinning.")
-    
+
     # Load the CSV files
     low_trees = pd.read_csv('Plot Low Trees.csv')
     crown_trees = pd.read_csv('Plot Crown Trees.csv')
 
     col1, col2 = st.columns(2) # Create two columns
-    button1 = col1.button('Low Thinning') # Assign the first button to the first column
-    button2 = col2.button('Crown Thinning') # Assign the second button to the second column
-
+    col1.markdown('<div style="text-align: center"> <button>Low Thinning</button> </div>', unsafe_allow_html=True) # Center the first button
+    col2.markdown('<div style="text-align: center"> <button>Crown Thinning</button> </div>', unsafe_allow_html=True) # Center the second button
 
     # Display the plot chart based on the button clicked
     if button1:
