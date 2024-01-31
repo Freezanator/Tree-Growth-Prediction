@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 
+
 def main():
     st.title("Statistics")
 
@@ -93,7 +94,6 @@ def main():
     with tab6:
         st.subheader(f"2023 (Predicted)")
         st.bar_chart(df_2023.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
-
 
 
 if __name__ == "__main__":
