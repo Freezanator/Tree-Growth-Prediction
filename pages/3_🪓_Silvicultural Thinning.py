@@ -43,7 +43,7 @@ def main():
     if button1:
         st.subheader('What is Low Thinning?')
 
-        st.write('Low thinning is a method of thinning that removes the smallest and weakest trees in a stand. The purpose of low thinning is to improve the growth and quality of the remaining trees by reducing competition for light, water, and nutrients. Low thinning is suitable for shade-tolerant species that can grow well under a closed canopy.')
+        st.write('Low thinning is a method of thinning that removes the smallest and shrinking trees in a stand to improve the growth and quality of the remaining trees. Low thinning is suitable for shade-tolerant species that can grow well under a closed canopy.')
 
         st.divider()
 
