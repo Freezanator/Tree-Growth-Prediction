@@ -47,6 +47,8 @@ def main():
 
         st.divider()
 
+        st.subheader('DBH Class Distribution after Low Thinning')
+        
         # Load data from csv
         df = pd.read_csv ('Graph Low Trees.csv')
 
