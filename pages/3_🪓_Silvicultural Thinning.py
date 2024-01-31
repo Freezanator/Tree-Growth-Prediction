@@ -12,7 +12,7 @@ def map(df2):
 
     # Update title attributes
     fig.update_layout(
-        title='Coordinates of Trees to be Harvested',
+        title='Location of Trees to be Harvested',
         xaxis_title='X-Coordinate',
         yaxis_title='Y-Coordinate'
     )
