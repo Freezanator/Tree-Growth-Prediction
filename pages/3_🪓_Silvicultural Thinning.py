@@ -61,8 +61,21 @@ def main():
 
 
     elif button2:
-        fig = px.line(crown_trees, x='x', y='y', title='Crown Thinning Plot')
-        st.plotly_chart(fig)
+        # Load data from csv
+        df = pd.read_csv ('Graph Crown Trees.csv')
+
+        # Melt the dataframe to long format
+        df_long = pd.melt(df, id_vars="DBH Class", value_vars=["Harvested", "Remaining"], var_name="Count", value_name="Value")
+
+        # Create the stacked bar chart using Altair
+        chart = alt.Chart(df_long).mark_bar().encode(
+            x=alt.X("DBH Class:N", title="DBH Class"),
+            y=alt.Y("Value:Q", title="Count"),
+            color=alt.Color("Count:N", title="Count")
+        )
+
+        # Display the chart using Streamlit
+        st.altair_chart(chart, use_container_width=True)
 
 
 if __name__ == "__main__":
