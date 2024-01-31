@@ -6,9 +6,9 @@ import altair as alt
 
 def map(df2):
     # Convert 'SP' column to categorical
-    df2['SP'] = df2['SP'].astype('category')
+    df2['SPECIES'] = df2['SPECIES'].astype('category')
 
-    fig = px.scatter(df2, x='XCO', y='YCO', color='SP', color_discrete_sequence=px.colors.qualitative.Pastel, labels={'SP':'Species'})
+    fig = px.scatter(df2, x='XCO', y='YCO', color='SP', color_discrete_sequence=px.colors.qualitative.Pastel, labels={'SPECIES':'Species'})
 
     # Update title attributes
     fig.update_layout(
