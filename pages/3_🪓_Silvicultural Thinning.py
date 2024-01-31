@@ -10,8 +10,9 @@ def map(df2):
 
     # Add custom hover data
     hover_data1 = {
-        'Growth': 'Growth Rate',
-        'DBH': 'Diameter at Breast Height'
+        'DBH2021': 'DBH',
+        'GROWTH1921': 'Growth Rate',
+        'CLASS2021': 'DBH Class'
     }
 
     fig = px.scatter(df2, x='XCO', y='YCO', color='SPECIES', color_discrete_sequence=px.colors.qualitative.Pastel, labels={'SPECIES':'Species'}, hover_data=hover_data1)
