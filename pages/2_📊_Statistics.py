@@ -80,9 +80,13 @@ def main():
     # Read the csv files
     df_2013 = pd.read_csv('DBH2013.csv')
     df_2015 = pd.read_csv('DBH2015.csv')
+    df_2017 = pd.read_csv('DBH2017.csv')
+    df_2019 = pd.read_csv('DBH2019.csv')
+    df_2021 = pd.read_csv('DBH2021.csv')
+    df_2023 = pd.read_csv('DBH2023.csv')
 
     # Create a tab container
-    tab1, tab2 = st.tabs(['2013', '2015'])
+    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(['2013', '2015', '2017', '2019', '2021', '2023 (Predicted)'])
 
     # Create a bar chart based on the selected tab
     with tab1:
@@ -91,6 +95,17 @@ def main():
     with tab2:
         st.bar_chart(df_2015.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
 
+    with tab3:
+        st.bar_chart(df_2017.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
+
+    with tab4:
+        st.bar_chart(df_2019.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
+
+    with tab5:
+        st.bar_chart(df_2021.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
+
+    with tab6:
+        st.bar_chart(df_2023.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
 
 
 
