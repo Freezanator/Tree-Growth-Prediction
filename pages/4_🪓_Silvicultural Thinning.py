@@ -82,6 +82,53 @@ def main():
     df2 = pd.DataFrame(lowtrees)
     map(df2)
 
+    st.divider()
 
+    data = lowtrees[['SPECIES', 'XCO', 'YCO', 'DBH2023', 'CLASS2023']]  # Considering 'DBH' as the column for Diameter at Breast Height
+
+    # Filter out trees with DBH=0
+    data = data[data['DBH2023'] != 0]
+
+    # Map species to categorical values for color representation
+    data['SP_category'] = pd.Categorical(data['SPECIES'])
+    data['SP_code'] = data['SP_category'].cat.codes
+
+    def mapshow_3d_with_line(df, key):
+        fig = go.Figure()
+
+        # Add tree points in 3D scatter plot
+        fig.add_trace(go.Scatter3d(
+            x=df['XCO'], y=df['YCO'], z=df['DBH2023'],
+            mode='markers',
+            marker=dict(color=df['SP_code'], size=df['DBH2023'], colorscale='Viridis', colorbar=dict(title='SPECIES')),
+            name='SPECIES'
+        ))
+
+        # Add lines from each tree to its top based on height
+        for i, row in df.iterrows():
+            fig.add_trace(go.Scatter3d(
+                x=[row['XCO'], row['XCO']], y=[row['YCO'], row['YCO']],
+                z=[0, row['DBH2023']],
+                mode='lines',
+                line=dict(color='#5E4C3E', width=3),
+                showlegend=False
+            ))
+
+        # Update layout for larger plot
+        fig.update_layout(
+            scene=dict(
+                xaxis_title='X-Coordinate',
+                yaxis_title='Y-Coordinate',
+                zaxis_title='Tree DBH',
+            ),
+            title='3D Tree Locations Representing Tree DBH',
+            width=800,  # Adjust the width of the plot
+            height=800,  # Adjust the height of the plot
+        )
+
+        st.plotly_chart(fig, key=key)
+
+        mapshow_3d_with_line(data, key='unique_chart')
+        
 if __name__ == '__main__':
     main()
