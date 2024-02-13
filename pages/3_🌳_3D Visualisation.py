@@ -30,7 +30,7 @@ def main():
             x=df['XCO'], y=df['YCO'], z=df['DBH2021'],
             mode='markers',
             marker=dict(color=df['SP_code'], size=df['DBH2021'], colorscale='Viridis', colorbar=dict(title='SPECIES')),
-            name='SPECIES'
+            name=''
         ))
 
         # Add lines from each tree to its top based on height
