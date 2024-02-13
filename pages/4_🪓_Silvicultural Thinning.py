@@ -82,8 +82,6 @@ def main():
     df2 = pd.DataFrame(lowtrees)
     map(df2)
 
-    st.divider()
-
     data = lowtrees[['SPECIES', 'XCO', 'YCO', 'DBH2023', 'CLASS2023']]  # Considering 'DBH' as the column for Diameter at Breast Height
 
     # Filter out trees with DBH=0
@@ -128,7 +126,7 @@ def main():
 
         st.plotly_chart(fig, key=key)
 
-        mapshow_3d_with_line(data, key='unique_chart')
-        
+    mapshow_3d_with_line(data, key='unique_chart')
+
 if __name__ == '__main__':
     main()
