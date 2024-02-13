@@ -48,7 +48,7 @@ def mapshow_3d_with_line(df, key):
             yaxis_title='Y-Coordinate',
             zaxis_title='Tree DBH',
         ),
-        title='3D Tree Locations Representing Tree DBH',
+        title='Location of Trees to be Harvested in 3D',
         width=800,  # Adjust the width of the plot
         height=800,  # Adjust the height of the plot
     )
