@@ -115,7 +115,7 @@ def main():
         lowtrees = pd.read_csv('Thinning Scatter 5.csv')
 
     df2 = pd.DataFrame(lowtrees)
-    map(df2)
+    #map(df2)
 
     data = lowtrees[['SPECIES', 'XCO', 'YCO', 'DBH2023', 'CLASS2023']]  # Considering 'DBH' as the column for Diameter at Breast Height
 
