@@ -27,7 +27,7 @@ def mapshow_3d_with_line(df, key):
     fig.add_trace(go.Scatter3d(
         x=df['XCO'], y=df['YCO'], z=df['DBH2023'],
         mode='markers',
-        marker=dict(color=df['SP_code'], size=df['DBH2023'], colorscale='Viridis')
+        marker=dict(color=df['SP_code'], size=df['DBH2023'], colorscale='Viridis', colorbar=dict(title='DBH2023'))
     ))
 
     # Add lines from each tree to its top based on height
