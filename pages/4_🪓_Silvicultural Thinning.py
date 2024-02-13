@@ -28,7 +28,7 @@ def mapshow_3d_with_line(df, key):
         x=df['XCO'], y=df['YCO'], z=df['DBH2023'],
         mode='markers',
         marker=dict(color=df['SP_code'], size=df['DBH2023'], colorscale='Viridis', colorbar=dict(title='SPECIES')),
-        name='SPECIES'
+        name=''
     ))
 
     # Add lines from each tree to its top based on height
