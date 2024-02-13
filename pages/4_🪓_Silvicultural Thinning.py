@@ -126,9 +126,8 @@ def main():
     data['SP_category'] = pd.Categorical(data['SPECIES'])
     data['SP_code'] = data['SP_category'].cat.codes
 
-
-
     mapshow_3d_with_line(data, key='unique_chart')
+
 
 if __name__ == '__main__':
     main()
