@@ -29,7 +29,7 @@ def main():
         fig.add_trace(go.Scatter3d(
             x=df['XCO'], y=df['YCO'], z=df['DBH2021'],
             mode='markers',
-            marker=dict(color=df['SP_code'], size=df['DBH2021'], colorscale='Viridis', colorbar=dict(title='SPECIES')),
+            marker=dict(color=df['SP_code'], size=df['DBH2021'], colorscale='Viridis', colorbar=dict(title='COUNT')),
             name=''
         ))
 
