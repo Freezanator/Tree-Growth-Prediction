@@ -31,17 +31,7 @@ def main():
 
     st.divider()
 
-    col1, col2 = st.columns(2) # Create two columns
-    button1 = col1.button('Low Thinning') # Assign the first button to the first column
-    button2 = col2.button('Crown Thinning') # Assign the second button to the second column
-
-    st.subheader('What is Low Thinning?')
-
-    st.write('Low thinning is a method of thinning that removes the smallest and shrinking trees in a stand to improve the growth and quality of the remaining trees. Low thinning is suitable for shade-tolerant species that can grow well under a closed canopy.')
-
-    st.divider()
-
-    st.subheader('DBH Class Distribution after Low Thinning')
+    st.subheader('DBH Class Distribution after Thinning')
 
     intensity = st.select_slider('Select a thinning intensity', options = ['Very Mild', 'Mild', 'Moderate', 'Intense', 'Very Intense'])
         
