@@ -35,67 +35,63 @@ def main():
     button1 = col1.button('Low Thinning') # Assign the first button to the first column
     button2 = col2.button('Crown Thinning') # Assign the second button to the second column
 
-    # Display the plot chart based on the button clicked
-    if button1:
-        st.subheader('What is Low Thinning?')
+    st.subheader('What is Low Thinning?')
 
-        st.write('Low thinning is a method of thinning that removes the smallest and shrinking trees in a stand to improve the growth and quality of the remaining trees. Low thinning is suitable for shade-tolerant species that can grow well under a closed canopy.')
+    st.write('Low thinning is a method of thinning that removes the smallest and shrinking trees in a stand to improve the growth and quality of the remaining trees. Low thinning is suitable for shade-tolerant species that can grow well under a closed canopy.')
 
-        st.divider()
+    st.divider()
 
-        st.subheader('DBH Class Distribution after Low Thinning')
+    st.subheader('DBH Class Distribution after Low Thinning')
 
-        # Load data from csv
-        df1 = pd.read_csv ('Graph Low Trees.csv')
+    intensity = st.select_slider('Select a thinning intensity', options = ['Very Mild', 'Mild', 'Moderate', 'Intense', 'Very Intense'])
+        
+    # Load data from csv
+    if intensity == 'Very Mild':
+        df1 = pd.read_csv('Thinning Bar 1.csv')
 
-        # Melt the dataframe to long format
-        df_long = pd.melt(df1, id_vars='DBH Class', value_vars=['Harvested', 'Remaining'], var_name='Count', value_name='Value')
+    elif intensity == 'Mild':
+        df1 = pd.read_csv('Thinning Bar 2.csv')
+            
+    elif intensity == 'Moderate':
+        df1 = pd.read_csv('Thinning Bar 3.csv')
 
-        # Create the stacked bar chart using Altair
-        chart = alt.Chart(df_long).mark_bar().encode(
-            x=alt.X('DBH Class:N', title='DBH Class'),
-            y=alt.Y('Value:Q', title='Count'),
-            color=alt.Color('Count:N', title='Count')
-        )
+    elif intensity == 'Intense':
+        df1 = pd.read_csv('Thinning Bar 4.csv')
 
-        # Display the chart using Streamlit
-        st.altair_chart(chart, use_container_width=True)
+    elif intensity == 'Very Intense':
+        df1 = pd.read_csv('Thinning Bar 5.csv')
 
-        lowtrees = pd.read_csv('Plot Low Trees.csv')
-        df2 = pd.DataFrame(lowtrees)
-        map(df2)
+    # Melt the dataframe to long format
+    df_long = pd.melt(df1, id_vars='DBH Class', value_vars=['Harvested', 'Remaining'], var_name='Count', value_name='Value')
 
-    elif button2:
-        st.subheader('What is Crown Thinning?')
+    # Create the stacked bar chart using Altair
+    chart = alt.Chart(df_long).mark_bar().encode(
+        x=alt.X('DBH Class:N', title='DBH Class'),
+        y=alt.Y('Value:Q', title='Count'),
+        color=alt.Color('Count:N', title='Count')
+    )
 
-        st.write('Crown thinning is a method of thinning that removes most dominant and co-dominant trees from a stand. The aim of a crown thinning is to give smaller trees freedom to grow rapidly by gradually removing competing dominant trees.')
+    # Display the chart using Streamlit
+    st.altair_chart(chart, use_container_width=True)
 
-        st.divider()
+    if intensity == 'Very Mild':
+        lowtrees = pd.read_csv('Thinning Scatter 1.csv')
 
-        st.subheader('DBH Class Distribution after Crown Thinning')
+    elif intensity == 'Mild':
+        lowtrees = pd.read_csv('Thinning Scatter 2.csv')
+        
+    elif intensity == 'Moderate':
+        lowtrees = pd.read_csv('Thinning Scatter 3.csv')
 
-        # Load data from csv
-        df1 = pd.read_csv ('Graph Crown Trees.csv')
+    elif intensity == 'Intense':
+        lowtrees = pd.read_csv('Thinning Scatter 4.csv')
 
-        # Melt the dataframe to long format
-        df_long = pd.melt(df1, id_vars='DBH Class', value_vars=['Harvested', 'Remaining'], var_name='Count', value_name='Value')
+    elif intensity == 'Very Intense':
+        lowtrees = pd.read_csv('Thinning Scatter 5.csv')
 
-        # Create the stacked bar chart using Altair
-        chart = alt.Chart(df_long).mark_bar().encode(
-            x=alt.X('DBH Class:N', title='DBH Class'),
-            y=alt.Y('Value:Q', title='Count'),
-            color=alt.Color('Count:N', title='Count')
-        )
+    df2 = pd.DataFrame(lowtrees)
+    map(df2)
 
-        # Display the chart using Streamlit
-        st.altair_chart(chart, use_container_width=True)
-
-        crowntrees = pd.read_csv('Plot Crown Trees.csv')
-        df2 = pd.DataFrame(crowntrees)
-        map(df2)
-
-    else:
-        st.write('Please select a type of silvicultural thinning.')
 
 if __name__ == '__main__':
     main()
