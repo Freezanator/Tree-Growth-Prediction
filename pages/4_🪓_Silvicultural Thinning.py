@@ -66,7 +66,7 @@ def main():
 
     st.divider()
 
-    st.subheader('DBH Class Distribution after Thinning')
+    st.subheader('DBH Class Distribution in 2023 after Thinning')
 
     intensity = st.select_slider('Select a thinning intensity', options = ['Very Mild', 'Mild', 'Moderate', 'Intense', 'Very Intense'])
         
