@@ -18,7 +18,9 @@ def map(df):
     st.plotly_chart(fig)
 
 def main():
-    st.title("Growth Modelling & Analysis  \n  \n")
+    st.title("Growth Modelling & Analysis")
+    st.title("")
+    st.title("")
 
     st.header("Statistics")
 
