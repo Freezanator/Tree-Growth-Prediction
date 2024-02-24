@@ -1,9 +1,55 @@
 import streamlit as st
 import pandas as pd
 
+def map(df):
+    # Convert 'SP' column to categorical
+    df['SP'] = df['SP'].astype('category')
+
+    fig = px.scatter(df, x='XCO', y='YCO', color='SP', color_discrete_sequence=px.colors.qualitative.Pastel, labels={'SP':'Species'})
+
+    # Update title attributes
+    fig.update_layout(
+        title='Coordinates of Trees in 2021',
+        xaxis_title='X-Coordinate',
+        yaxis_title='Y-Coordinate'
+    )
+
+    st.plotly_chart(fig)
 
 def main():
     st.title("Statistics")
+
+    st.divider()
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.metric("Total number of trees", "1944")
+
+    with col2:
+        st.metric("Total number of tree species", "379")
+
+    st.divider()
+
+    st.subheader("Tree Coordinate Map (as of 2021)")
+
+    species_data = pd.read_csv('Species Coordinates.csv')
+    df = pd.DataFrame(species_data)
+    print(df.columns.str.strip())
+
+    # Get unique species values for the selectbox
+    species_list = ['ALL'] + sorted(df['SP'].unique().tolist())
+
+    # Use selectbox to select species
+    selected_species = st.selectbox('Select a species to view coordinates', species_list)
+
+    # Show a plot of the selected species
+    if selected_species != 'ALL':
+        filtered_df = df[df['SP'] == selected_species]
+        map(filtered_df)
+    else:
+        # Show a plot of all species
+        map(df)
 
     st.divider()
 
