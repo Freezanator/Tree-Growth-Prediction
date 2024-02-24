@@ -129,7 +129,8 @@ def main():
     with tab1:
         st.subheader(f"2013")
         st.bar_chart(df_2013.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
-    
+        st.markdown("<style='text-align: center; color: red;'>DBH Class<>", unsafe_allow_html=True)
+
     with tab2:
         st.subheader(f"2015")
         st.bar_chart(df_2015.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
