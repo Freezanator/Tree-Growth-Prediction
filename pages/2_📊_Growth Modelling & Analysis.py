@@ -19,8 +19,8 @@ def map(df):
 
 def main():
     st.title("Growth Modelling & Analysis")
-    st.title()
-    
+    st.title("")
+
     st.divider()
 
     st.header("Statistics")
