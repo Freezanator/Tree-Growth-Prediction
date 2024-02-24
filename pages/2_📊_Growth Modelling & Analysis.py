@@ -56,6 +56,10 @@ def main():
         # Show a plot of all species
         map(df)
 
+    st.title("")
+    st.title("")
+    st.header("Analysis")
+
     st.divider()
 
     col1, col2 = st.columns(2)
