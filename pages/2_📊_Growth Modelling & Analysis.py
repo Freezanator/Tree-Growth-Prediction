@@ -101,7 +101,7 @@ def main():
 
     st.divider()
 
-    st.write("The trees are classfied into the following 9 DBH classes:")
+    st.write("The trees are classfied into the following 9 DBH classes. The DBH classes range from <5cm up to >70cm (Shumi et al., 2019).")
 
     # Create a dataframe from the list of lists
     df = pd.DataFrame({
