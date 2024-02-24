@@ -18,7 +18,7 @@ def map(df):
     st.plotly_chart(fig)
 
 def main():
-    st.title("Growth Modelling & Analysis"")
+    st.title("Growth Modelling & Analysis")
 
     st.divider()
 
