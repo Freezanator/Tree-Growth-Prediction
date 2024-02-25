@@ -17,6 +17,21 @@ def map(df):
 
     st.plotly_chart(fig)
 
+def distribution(df):
+    # Create a plotly bar chart with custom font size and labels
+    fig = px.bar(df, x="DBH Class", y="Count", text="Count")
+    fig.update_layout(
+        title="Bar Chart Example",
+        xaxis_title="DBH Class",
+        yaxis_title="Count",
+        font=dict(size=18) # Change the font size for the whole chart
+    )
+    fig.update_xaxes(tickfont_size=16, tickmode='linear') # Change the font size for the x-axis ticks
+    fig.update_yaxes(tickfont_size=16) # Change the font size for the y-axis ticks
+
+    # Display the chart in Streamlit
+    st.plotly_chart(fig)
+
 def main():
     st.title("Growth Modelling & Analysis")
     st.title("")
@@ -128,22 +143,7 @@ def main():
     # Create a bar chart based on the selected tab
     with tab1:
         st.subheader(f"2013")
-        st.bar_chart(df_2013.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
-        
-        # Create a plotly bar chart with custom font size and labels
-        fig = px.bar(df_2013, x="DBH Class", y="Count", text="Count")
-        fig.update_layout(
-            title="Bar Chart Example",
-            xaxis_title="DBH Class",
-            yaxis_title="Count",
-            font=dict(size=18) # Change the font size for the whole chart
-        )
-        fig.update_xaxes(tickfont_size=16, tickmode='linear') # Change the font size for the x-axis ticks
-        fig.update_yaxes(tickfont_size=16) # Change the font size for the y-axis ticks
-
-        # Display the chart in Streamlit
-        st.plotly_chart(fig)
-        st.markdown("<p style='text-align: center;'>DBH Class</p>", unsafe_allow_html=True)
+        st.distribution(df_2013)
 
     with tab2:
         st.subheader(f"2015")
