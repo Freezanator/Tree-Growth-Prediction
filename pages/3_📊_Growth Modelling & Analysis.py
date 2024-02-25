@@ -120,10 +120,12 @@ def main():
     col3, col4 = st.columns(2)
 
     with col3:
+        st.write("Trees of Species with the Highest Growth")
         df = pd.read_csv("Highest Growth.csv")
         st.dataframe(df, hide_index=True)
 
     with col4:
+        st.write("Trees of Species with the Lowest Growth")
         df = pd.read_csv("Lowest Growth.csv")
         st.dataframe(df, hide_index=True)
 
