@@ -117,7 +117,7 @@ def main():
         lowtrees = pd.read_csv('Thinning Scatter 5.csv')
 
     # Display the DataFrame as a table
-    st.write(lowtrees)
+    st.table(lowtrees)
 
     data = lowtrees[['SPECIES', 'XCO', 'YCO', 'DBH2023', 'CLASS2023']]  # Considering 'DBH' as the column for Diameter at Breast Height
 
