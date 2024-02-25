@@ -112,7 +112,7 @@ def main():
 
     st.divider()
 
-    st.subheader("Tree Count in each DBH Class by Year")
+    st.subheader("Distribution of Trees in each DBH Class by Year")
 
     # Read the csv files
     df_2013 = pd.read_csv('DBH2013.csv')
