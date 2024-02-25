@@ -138,7 +138,7 @@ def main():
             yaxis_title="Count",
             font=dict(size=18) # Change the font size for the whole chart
         )
-        fig.update_xaxes(tickfont_size=16) # Change the font size for the x-axis ticks
+        fig.update_xaxes(tickfont_size=16, tickmode='linear') # Change the font size for the x-axis ticks
         fig.update_yaxes(tickfont_size=16) # Change the font size for the y-axis ticks
 
         # Display the chart in Streamlit
