@@ -122,7 +122,7 @@ def main():
     # Define the csv data as a string
     csv_data = """
     DBH Class,1,2,3,4,5,6,7,8,9
-    DBH Range,<5cm,5.1-10 cm,10.1-20 cm,20.1-30 cm,30.1-40 cm,40.1-50 cm,50.1-60 cm,60.1-70 cm,>70 cm
+    DBH Range (cm),<5,5.1-10,10.1-20,20.1-30,30.1-40,40.1-50,50.1-60,60.1-70,>70
     """
 
     # Convert the csv data to a pandas dataframe
