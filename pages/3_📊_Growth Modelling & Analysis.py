@@ -117,6 +117,18 @@ def main():
 
     st.divider()
 
+    col3, col4 = st.columns(2)
+
+    with col3:
+        df = pd.read_csv("Highest Growth")
+        st.table(df)
+
+    with col4:
+        df = pd.read_csv("Lowest Growth")
+        st.table(df)
+
+    st.divider()
+
     st.write("The trees are classfied into the following 9 DBH classes. The DBH classes range from <5cm up to >70cm (Shumi et al., 2019).")
 
     # Define the csv data as a string
