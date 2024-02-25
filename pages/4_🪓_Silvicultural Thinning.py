@@ -121,7 +121,7 @@ def main():
     # Display the DataFrame as a table
     lowtrees_renamed = lowtrees.rename(columns={"SPECIES": "Species", "XCO": "X Coordinate", "YCO": "Y Coordinate", "DBH2023": "DBH", "GROWTH2123": "Growth Rate", "CLASS2023": "DBH Class"})
     lowtrees_sorted = lowtrees_renamed.sort_values(by="DBH Class", ascending=True)
-    st.dataframe(lowtrees_sorted.style.format({"X Coordinate": "{:.1f}", "Y Coordinate": "{:.1f}", "DBH": "{:.1f}", "Growth Rate": "{:.1f}"}), height=423, width=800, hide_index=True)
+    st.dataframe(lowtrees_sorted.style.format({"X Coordinate": "{:.1f}", "Y Coordinate": "{:.1f}", "DBH": "{:.1f}", "Growth Rate": "{:.1f}"}), height=300, width=800, hide_index=True)
 
     data = lowtrees[['SPECIES', 'XCO', 'YCO', 'DBH2023', 'CLASS2023']]  # Considering 'DBH' as the column for Diameter at Breast Height
 
