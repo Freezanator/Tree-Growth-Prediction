@@ -96,10 +96,10 @@ def main():
         color=alt.Color('Count:N', title='Count')
     )
 
-    st.divider()
-
     # Display the chart using Streamlit
     st.altair_chart(chart, use_container_width=True)
+
+    st.divider()
 
     if intensity == 'Very Mild':
         lowtrees = pd.read_csv('Thinning Scatter 1.csv')
@@ -116,8 +116,11 @@ def main():
     elif intensity == 'Very Intense':
         lowtrees = pd.read_csv('Thinning Scatter 5.csv')
 
+    st.subheader("Table of Trees to be Thinned")
+
     # Display the DataFrame as a table
-    st.table(lowtrees)
+    lowtrees_sorted = lowtrees.sort_values(by="CLASS2023", ascending=True)
+    st.table(lowtrees_sorted)
 
     data = lowtrees[['SPECIES', 'XCO', 'YCO', 'DBH2023', 'CLASS2023']]  # Considering 'DBH' as the column for Diameter at Breast Height
 
