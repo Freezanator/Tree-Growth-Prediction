@@ -119,7 +119,8 @@ def main():
     st.subheader("Table of Trees to be Thinned")
 
     # Display the DataFrame as a table
-    lowtrees_sorted = lowtrees.sort_values(by="CLASS2023", ascending=True)
+    lowtrees_renamed = lowtrees.rename(columns={"SPECIES": "Species", "XCO": "X Coordinate", "YCO": "Y Coordinate", "DBH2023": "DBH", "GROWTH2123": "Growth Rate", "CLASS2023": "DBH Class"})
+    lowtrees_sorted = lowtrees_renamed.sort_values(by="CLASS2023", ascending=True)
     st.table(lowtrees_sorted)
 
     data = lowtrees[['SPECIES', 'XCO', 'YCO', 'DBH2023', 'CLASS2023']]  # Considering 'DBH' as the column for Diameter at Breast Height
