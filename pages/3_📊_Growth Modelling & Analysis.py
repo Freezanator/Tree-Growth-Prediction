@@ -129,7 +129,7 @@ def main():
     df = pd.read_csv(io.StringIO(csv_data))
 
     # Display the dataframe as a table in streamlit
-    st.dataframe(df, hide_index=True)
+    st.dataframe(df, height=50, width=800, hide_index=True)
 
     st.divider()
 
