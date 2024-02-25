@@ -116,7 +116,7 @@ def main():
     elif intensity == 'Very Intense':
         lowtrees = pd.read_csv('Thinning Scatter 5.csv')
 
-    st.subheader("Table of Trees to be Thinned")
+    st.subheader("List of Trees to Undergo Thinning")
 
     # Display the DataFrame as a table
     lowtrees_renamed = lowtrees.rename(columns={"SPECIES": "Species", "XCO": "X Coordinate", "YCO": "Y Coordinate", "DBH2023": "DBH", "GROWTH2123": "Growth Rate", "CLASS2023": "DBH Class"})
