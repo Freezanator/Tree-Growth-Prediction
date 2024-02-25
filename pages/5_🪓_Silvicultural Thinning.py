@@ -96,6 +96,8 @@ def main():
         color=alt.Color('Count:N', title='Count')
     )
 
+    st.divider()
+
     # Display the chart using Streamlit
     st.altair_chart(chart, use_container_width=True)
 
@@ -114,11 +116,8 @@ def main():
     elif intensity == 'Very Intense':
         lowtrees = pd.read_csv('Thinning Scatter 5.csv')
 
-
-    st.divider()
-    
     # Display the DataFrame as a table
-    st.table(lowtrees)
+    st.write(lowtrees)
 
     data = lowtrees[['SPECIES', 'XCO', 'YCO', 'DBH2023', 'CLASS2023']]  # Considering 'DBH' as the column for Diameter at Breast Height
 
