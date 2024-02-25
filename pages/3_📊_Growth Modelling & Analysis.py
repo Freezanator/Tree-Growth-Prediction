@@ -143,7 +143,7 @@ def main():
     # Create a bar chart based on the selected tab
     with tab1:
         st.subheader(f"2013")
-        st.distribution(df_2013)
+        distribution(df_2013)
 
     with tab2:
         st.subheader(f"2015")
