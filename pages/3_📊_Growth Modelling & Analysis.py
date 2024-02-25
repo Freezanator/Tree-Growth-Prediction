@@ -121,11 +121,11 @@ def main():
 
     with col3:
         df = pd.read_csv("Highest Growth.csv")
-        st.table(df)
+        st.dataframe(df, hide_index=True)
 
     with col4:
         df = pd.read_csv("Lowest Growth.csv")
-        st.table(df)
+        st.dataframe(df, hide_index=True)
 
     st.divider()
 
