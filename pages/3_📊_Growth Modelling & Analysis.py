@@ -21,7 +21,7 @@ def distribution(df):
     # Create a plotly bar chart with custom font size and labels
     fig = px.bar(df, x="DBH Class", y="Count", text="Count")
     fig.update_layout(
-        title="Bar Chart Example",
+        title="DBH Class Distribution",
         xaxis_title="DBH Class",
         yaxis_title="Count",
         font=dict(size=18) # Change the font size for the whole chart
@@ -147,28 +147,23 @@ def main():
 
     with tab2:
         st.subheader(f"2015")
-        st.bar_chart(df_2015.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
-        st.markdown("<p style='text-align: center;'>DBH Class</p>", unsafe_allow_html=True)
+        distribution(df_2015)
 
     with tab3:
         st.subheader(f"2017")
-        st.bar_chart(df_2017.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
-        st.markdown("<p style='text-align: center;'>DBH Class</p>", unsafe_allow_html=True)
+        distribution(df_2017)
 
     with tab4:
         st.subheader(f"2019")
-        st.bar_chart(df_2019.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
-        st.markdown("<p style='text-align: center;'>DBH Class</p>", unsafe_allow_html=True)
+        distribution(df_2019)
 
     with tab5:
         st.subheader(f"2021")
-        st.bar_chart(df_2021.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
-        st.markdown("<p style='text-align: center;'>DBH Class</p>", unsafe_allow_html=True)
+        distribution(df_2021)
 
     with tab6:
         st.subheader(f"2023 (Predicted)")
-        st.bar_chart(df_2023.set_index('DBH Class')) # Use streamlit's bar_chart and set the index to DBH Class
-        st.markdown("<p style='text-align: center;'>DBH Class</p>", unsafe_allow_html=True)
+        distribution(df_2023)
 
 if __name__ == "__main__":
     main()
